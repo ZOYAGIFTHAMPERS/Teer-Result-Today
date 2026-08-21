@@ -1,0 +1,25 @@
+TEER RESULT TODAY - LIVE WEBSITE SETUP
+
+Files:
+- index.html = public result website
+- admin.html = password protected admin panel
+- logo.png = website logo
+
+IMPORTANT:
+The HTML files use Firebase Authentication + Firestore for live updates.
+You must create a Firebase project and replace the firebaseConfig placeholders
+in BOTH index.html and admin.html.
+
+1. Create a Firebase project.
+2. Add a Web App and copy its config.
+3. Enable Authentication > Email/Password.
+4. Create one admin user (email + password).
+5. Create Firestore Database.
+6. Put the same Firebase config in both HTML files.
+7. Deploy these files on any static hosting.
+8. Open /admin.html, login with the admin email/password, enter a result and save.
+9. The public /index.html reads the same Firestore collection and updates live.
+
+SECURITY:
+Use Firebase Authentication. Do NOT put a plain admin password directly in HTML.
+For production, Firestore security rules should allow only authenticated admins to write.
