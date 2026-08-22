@@ -5,19 +5,22 @@
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>Admin Panel - Teer Result Today</title>
 
-
   <style>
+
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f3f4f6;
+      color: #222;
     }
 
     .container {
@@ -35,39 +38,28 @@
 
     h1 {
       text-align: center;
+      margin-top: 0;
     }
 
     input,
     select {
-
       width: 100%;
       padding: 13px;
       margin: 8px 0 15px;
-
       border: 1px solid #ccc;
       border-radius: 8px;
-
       font-size: 16px;
-
-      box-sizing: border-box;
       background: white;
-
     }
 
     button {
-
       width: 100%;
       padding: 13px;
-
       border: 0;
       border-radius: 8px;
-
       font-size: 16px;
-
       margin-top: 8px;
-
       cursor: pointer;
-
     }
 
     #googleLogin {
@@ -108,13 +100,20 @@
     .access-denied {
       color: #dc2626;
       font-weight: bold;
+    }
+
+    .time-info {
+      background: #f3f4f6;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
       text-align: center;
+      font-size: 14px;
     }
 
   </style>
 
 </head>
-
 
 <body>
 
@@ -146,7 +145,7 @@
     </div>
 
 
-    <!-- ADMIN -->
+    <!-- ADMIN PANEL -->
 
     <div
       id="adminSection"
@@ -196,36 +195,53 @@
         id="resultDate">
 
 
-      <!-- FIRST -->
+      <!-- TIME -->
+
+      <div class="time-info">
+
+        First Round: <strong>4:00 PM</strong><br>
+
+        Second Round: <strong>5:00 PM</strong>
+
+      </div>
+
+
+      <!-- FIRST ROUND -->
 
       <label>
-        First Round
+        First Round (FR)
       </label>
 
       <input
         type="text"
         id="firstRound"
-        placeholder="Enter FR"
-        maxlength="3">
+        placeholder="Enter First Round"
+        maxlength="3"
+        inputmode="numeric">
 
 
-      <!-- SECOND -->
+      <!-- SECOND ROUND -->
 
       <label>
-        Second Round
+        Second Round (SR)
       </label>
 
       <input
         type="text"
         id="secondRound"
-        placeholder="Enter SR"
-        maxlength="3">
+        placeholder="Enter Second Round"
+        maxlength="3"
+        inputmode="numeric">
 
+
+      <!-- SAVE -->
 
       <button id="saveResult">
         Save / Update Result
       </button>
 
+
+      <!-- LOGOUT -->
 
       <button id="logout">
         Logout
@@ -275,7 +291,7 @@ from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* FIREBASE */
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -303,23 +319,22 @@ const firebaseConfig = {
 };
 
 
+/* INITIALIZE */
+
 const app =
   initializeApp(firebaseConfig);
-
 
 const auth =
   getAuth(app);
 
-
 const db =
   getFirestore(app);
-
 
 const provider =
   new GoogleAuthProvider();
 
 
-/* ONLY THIS GMAIL */
+/* ADMIN GMAIL */
 
 const ADMIN_EMAIL =
   "rbdpublicationcompany@gmail.com";
@@ -338,9 +353,7 @@ document
         provider
       );
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
       document
         .getElementById("loginStatus")
@@ -353,7 +366,7 @@ document
   };
 
 
-/* AUTH */
+/* AUTH STATE */
 
 onAuthStateChanged(
   auth,
@@ -370,23 +383,17 @@ onAuthStateChanged(
         .classList.add("hidden");
 
       return;
+
     }
 
 
-    /* CHECK EMAIL */
+    /* CHECK ADMIN EMAIL */
 
     if (
+      !user.email ||
       user.email.toLowerCase() !==
       ADMIN_EMAIL.toLowerCase()
     ) {
-
-      document
-        .getElementById("loginSection")
-        .classList.remove("hidden");
-
-      document
-        .getElementById("adminSection")
-        .classList.add("hidden");
 
       document
         .getElementById("loginStatus")
@@ -395,6 +402,14 @@ onAuthStateChanged(
         "Access Denied. This Gmail is not authorized." +
         "</span>";
 
+      document
+        .getElementById("adminSection")
+        .classList.add("hidden");
+
+      document
+        .getElementById("loginSection")
+        .classList.remove("hidden");
+
       await signOut(auth);
 
       return;
@@ -402,7 +417,7 @@ onAuthStateChanged(
     }
 
 
-    /* ADMIN */
+    /* SHOW ADMIN */
 
     document
       .getElementById("loginSection")
@@ -420,7 +435,7 @@ onAuthStateChanged(
   });
 
 
-/* LOAD OLD RESULT */
+/* LOAD EXISTING RESULT */
 
 async function loadExistingResult() {
 
@@ -436,7 +451,9 @@ async function loadExistingResult() {
 
 
   if (!teerType || !date) {
+
     return;
+
   }
 
 
@@ -479,11 +496,9 @@ async function loadExistingResult() {
       document
         .getElementById("saveStatus")
         .textContent =
-        "Existing result loaded. You can edit it.";
+        "Old result loaded. You can edit it.";
 
-    }
-
-    else {
+    } else {
 
       document
         .getElementById("firstRound")
@@ -496,13 +511,11 @@ async function loadExistingResult() {
       document
         .getElementById("saveStatus")
         .textContent =
-        "No result for this date. You can add a new result.";
+        "No result found. Add a new result.";
 
     }
 
-  }
-
-  catch (error) {
+  } catch (error) {
 
     document
       .getElementById("saveStatus")
@@ -514,7 +527,7 @@ async function loadExistingResult() {
 }
 
 
-/* WHEN TEER CHANGES */
+/* TEER CHANGE */
 
 document
   .getElementById("teerType")
@@ -524,7 +537,7 @@ document
   );
 
 
-/* WHEN DATE CHANGES */
+/* DATE CHANGE */
 
 document
   .getElementById("resultDate")
@@ -534,7 +547,7 @@ document
   );
 
 
-/* SAVE */
+/* SAVE / UPDATE */
 
 document
   .getElementById("saveResult")
@@ -645,6 +658,10 @@ document
           updatedBy:
             ADMIN_EMAIL
 
+        },
+
+        {
+          merge: true
         }
 
       );
@@ -656,9 +673,7 @@ document
         "Result saved / updated successfully!";
 
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
       document
         .getElementById("saveStatus")
@@ -685,4 +700,5 @@ document
 </script>
 
 </body>
+
 </html>
