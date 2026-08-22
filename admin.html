@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +7,10 @@
   <title>Admin Panel - Teer Result Today</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f3f4f6;
-      color: #222;
     }
 
     .container {
@@ -27,12 +23,11 @@
       background: white;
       padding: 25px;
       border-radius: 15px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 18px rgba(0,0,0,.08);
     }
 
     h1 {
       text-align: center;
-      margin-top: 0;
     }
 
     input {
@@ -42,6 +37,7 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 16px;
+      box-sizing: border-box;
     }
 
     button {
@@ -50,8 +46,8 @@
       border: 0;
       border-radius: 8px;
       font-size: 16px;
-      cursor: pointer;
       margin-top: 8px;
+      cursor: pointer;
     }
 
     #googleLogin {
@@ -79,14 +75,13 @@
       font-weight: bold;
     }
 
-    .user {
-      text-align: center;
-      color: #555;
-      margin-bottom: 20px;
-    }
-
     label {
       font-weight: bold;
+    }
+
+    .user {
+      text-align: center;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -94,16 +89,14 @@
 <body>
 
 <div class="container">
-
   <div class="card">
 
     <h1>Admin Panel</h1>
 
-    <!-- LOGIN -->
     <div id="loginSection">
 
       <p style="text-align:center;">
-        Admin login with Google
+        Admin Login with Google
       </p>
 
       <button id="googleLogin">
@@ -115,7 +108,6 @@
     </div>
 
 
-    <!-- ADMIN PANEL -->
     <div id="adminSection" class="hidden">
 
       <div class="user">
@@ -127,18 +119,10 @@
       <input type="date" id="resultDate">
 
       <label>First Round</label>
-      <input
-        type="text"
-        id="firstRound"
-        placeholder="Enter First Round"
-      >
+      <input type="text" id="firstRound" placeholder="Enter First Round">
 
       <label>Second Round</label>
-      <input
-        type="text"
-        id="secondRound"
-        placeholder="Enter Second Round"
-      >
+      <input type="text" id="secondRound" placeholder="Enter Second Round">
 
       <button id="saveResult">
         Save Result
@@ -153,177 +137,144 @@
     </div>
 
   </div>
-
 </div>
 
 
-<!-- Firebase -->
 <script type="module">
 
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-  import {
-    getAuth,
-    GoogleAuthProvider,
-    signInWithPopup,
-    onAuthStateChanged,
-    signOut
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-  import {
-    getFirestore,
-    doc,
-    setDoc
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-  // ==========================================
-  // PASTE YOUR FIREBASE CONFIG HERE
-  // ==========================================
-
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.firebasestorage.app",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
+import {
+  getFirestore,
+  doc,
+  setDoc
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-  const app = initializeApp(firebaseConfig);
+const firebaseConfig = {
+  apiKey: "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
+  authDomain: "teer-result-today.firebaseapp.com",
+  projectId: "teer-result-today",
+  storageBucket: "teer-result-today.firebasestorage.app",
+  messagingSenderId: "903009219263",
+  appId: "1:903009219263:web:b10f24ed08ad2cc3904c0a",
+  measurementId: "G-NL95SM0CJM"
+};
 
-  const auth = getAuth(app);
 
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
 
-  const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+const provider = new GoogleAuthProvider();
 
 
-  // ==========================================
-  // GOOGLE LOGIN
-  // ==========================================
+document.getElementById("googleLogin").onclick = async () => {
 
-  document.getElementById("googleLogin").addEventListener(
-    "click",
-    async () => {
+  try {
 
-      try {
+    await signInWithPopup(auth, provider);
 
-        await signInWithPopup(auth, provider);
+  } catch (error) {
 
-      } catch (error) {
+    document.getElementById("loginStatus").textContent =
+      "Login failed: " + error.message;
 
-        console.error(error);
+  }
 
-        document.getElementById("loginStatus").textContent =
-          "Login failed: " + error.message;
+};
 
+
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+
+    document.getElementById("loginSection")
+      .classList.add("hidden");
+
+    document.getElementById("adminSection")
+      .classList.remove("hidden");
+
+    document.getElementById("userEmail").textContent =
+      user.email;
+
+  } else {
+
+    document.getElementById("loginSection")
+      .classList.remove("hidden");
+
+    document.getElementById("adminSection")
+      .classList.add("hidden");
+
+  }
+
+});
+
+
+document.getElementById("saveResult").onclick = async () => {
+
+  const date =
+    document.getElementById("resultDate").value;
+
+  const firstRound =
+    document.getElementById("firstRound").value.trim();
+
+  const secondRound =
+    document.getElementById("secondRound").value.trim();
+
+
+  if (!date || !firstRound || !secondRound) {
+
+    document.getElementById("saveStatus").textContent =
+      "Please fill all fields.";
+
+    return;
+  }
+
+
+  try {
+
+    await setDoc(
+      doc(db, "results", "latest"),
+      {
+        date: date,
+        firstRound: firstRound,
+        secondRound: secondRound,
+        updatedAt: new Date().toISOString()
       }
+    );
 
-    }
-  );
+    document.getElementById("saveStatus").textContent =
+      "Result saved successfully!";
 
+  } catch (error) {
 
-  // ==========================================
-  // CHECK LOGIN
-  // ==========================================
+    document.getElementById("saveStatus").textContent =
+      "Save failed: " + error.message;
 
-  onAuthStateChanged(auth, (user) => {
+  }
 
-    if (user) {
-
-      document.getElementById("loginSection")
-        .classList.add("hidden");
-
-      document.getElementById("adminSection")
-        .classList.remove("hidden");
-
-      document.getElementById("userEmail")
-        .textContent = user.email;
-
-    } else {
-
-      document.getElementById("loginSection")
-        .classList.remove("hidden");
-
-      document.getElementById("adminSection")
-        .classList.add("hidden");
-
-    }
-
-  });
+};
 
 
-  // ==========================================
-  // SAVE RESULT
-  // ==========================================
+document.getElementById("logout").onclick = async () => {
 
-  document.getElementById("saveResult").addEventListener(
-    "click",
-    async () => {
+  await signOut(auth);
 
-      const date =
-        document.getElementById("resultDate").value;
-
-      const firstRound =
-        document.getElementById("firstRound").value.trim();
-
-      const secondRound =
-        document.getElementById("secondRound").value.trim();
-
-
-      if (!date || !firstRound || !secondRound) {
-
-        document.getElementById("saveStatus").textContent =
-          "Please fill all fields.";
-
-        return;
-      }
-
-
-      try {
-
-        await setDoc(
-          doc(db, "results", "latest"),
-          {
-            date: date,
-            firstRound: firstRound,
-            secondRound: secondRound,
-            updatedAt: new Date().toISOString()
-          }
-        );
-
-
-        document.getElementById("saveStatus").textContent =
-          "Result saved successfully!";
-
-      } catch (error) {
-
-        console.error(error);
-
-        document.getElementById("saveStatus").textContent =
-          "Save failed: " + error.message;
-
-      }
-
-    }
-  );
-
-
-  // ==========================================
-  // LOGOUT
-  // ==========================================
-
-  document.getElementById("logout").addEventListener(
-    "click",
-    async () => {
-
-      await signOut(auth);
-
-    }
-  );
+};
 
 </script>
 
