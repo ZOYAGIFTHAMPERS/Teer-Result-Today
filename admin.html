@@ -1,704 +1,862 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Teer Result Today</title>
 
-  <meta charset="UTF-8">
+<style>
+*{box-sizing:border-box}
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#eef2ff,#fff7ed);
+}
 
-  <title>Admin Panel - Teer Result Today</title>
+.container{
+  max-width:550px;
+  margin:40px auto;
+  padding:15px;
+}
 
-  <style>
+.card{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.10);
+}
 
-    * {
-      box-sizing: border-box;
-    }
+h1{
+  text-align:center;
+  color:#312e81;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      color: #222;
-    }
+input,select{
+  width:100%;
+  padding:13px;
+  margin:8px 0 15px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+  box-sizing:border-box;
+}
 
-    .container {
-      max-width: 550px;
-      margin: 40px auto;
-      padding: 15px;
-    }
+button{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  margin-top:8px;
+  cursor:pointer;
+}
 
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 18px rgba(0,0,0,.08);
-    }
+#googleLogin{
+  background:#111827;
+  color:white;
+}
 
-    h1 {
-      text-align: center;
-      margin-top: 0;
-    }
+#saveResult{
+  background:#16a34a;
+  color:white;
+}
 
-    input,
-    select {
-      width: 100%;
-      padding: 13px;
-      margin: 8px 0 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      background: white;
-    }
+#deleteResult{
+  background:#dc2626;
+  color:white;
+}
 
-    button {
-      width: 100%;
-      padding: 13px;
-      border: 0;
-      border-radius: 8px;
-      font-size: 16px;
-      margin-top: 8px;
-      cursor: pointer;
-    }
+#logout{
+  background:#475569;
+  color:white;
+}
 
-    #googleLogin {
-      background: #111827;
-      color: white;
-    }
+.hidden{
+  display:none;
+}
 
-    #saveResult {
-      background: #16a34a;
-      color: white;
-    }
+.status{
+  text-align:center;
+  margin:15px 0;
+  font-weight:bold;
+}
 
-    #logout {
-      background: #dc2626;
-      color: white;
-    }
+.error{
+  color:#dc2626;
+}
 
-    .hidden {
-      display: none;
-    }
+.success{
+  color:#16a34a;
+}
 
-    .status {
-      text-align: center;
-      margin: 15px 0;
-      font-weight: bold;
-    }
+label{
+  font-weight:bold;
+  display:block;
+  margin-top:5px;
+}
 
-    label {
-      font-weight: bold;
-      display: block;
-    }
+.user{
+  text-align:center;
+  margin-bottom:20px;
+}
 
-    .user {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .access-denied {
-      color: #dc2626;
-      font-weight: bold;
-    }
-
-    .time-info {
-      background: #f3f4f6;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-  </style>
-
+.time-info{
+  background:#f1f5f9;
+  padding:12px;
+  border-radius:8px;
+  text-align:center;
+  margin-bottom:15px;
+  color:#334155;
+}
+</style>
 </head>
 
 <body>
 
-
 <div class="container">
 
-  <div class="card">
+<div class="card">
 
-    <h1>Admin Panel</h1>
-
-
-    <!-- LOGIN -->
-
-    <div id="loginSection">
-
-      <p style="text-align:center;">
-        Admin Login with Google
-      </p>
-
-      <button id="googleLogin">
-        Login with Google
-      </button>
-
-      <div
-        class="status"
-        id="loginStatus">
-      </div>
-
-    </div>
+<h1>Admin Panel</h1>
 
 
-    <!-- ADMIN PANEL -->
+<!-- LOGIN -->
 
-    <div
-      id="adminSection"
-      class="hidden">
+<div id="loginSection">
 
+<p style="text-align:center;">
+Login with Admin Google Account
+</p>
 
-      <div class="user">
+<button id="googleLogin">
+Login with Google
+</button>
 
-        Logged in as:
-
-        <strong id="userEmail"></strong>
-
-      </div>
-
-
-      <!-- TEER -->
-
-      <label>
-        Teer Type
-      </label>
-
-      <select id="teerType">
-
-        <option value="">
-          Select Teer
-        </option>
-
-        <option value="shillong">
-          Shillong Teer
-        </option>
-
-        <option value="khanapara">
-          Khanapara Teer
-        </option>
-
-      </select>
-
-
-      <!-- DATE -->
-
-      <label>
-        Result Date
-      </label>
-
-      <input
-        type="date"
-        id="resultDate">
-
-
-      <!-- TIME -->
-
-      <div class="time-info">
-
-        First Round: <strong>4:00 PM</strong><br>
-
-        Second Round: <strong>5:00 PM</strong>
-
-      </div>
-
-
-      <!-- FIRST ROUND -->
-
-      <label>
-        First Round (FR)
-      </label>
-
-      <input
-        type="text"
-        id="firstRound"
-        placeholder="Enter First Round"
-        maxlength="3"
-        inputmode="numeric">
-
-
-      <!-- SECOND ROUND -->
-
-      <label>
-        Second Round (SR)
-      </label>
-
-      <input
-        type="text"
-        id="secondRound"
-        placeholder="Enter Second Round"
-        maxlength="3"
-        inputmode="numeric">
-
-
-      <!-- SAVE -->
-
-      <button id="saveResult">
-        Save / Update Result
-      </button>
-
-
-      <!-- LOGOUT -->
-
-      <button id="logout">
-        Logout
-      </button>
-
-
-      <div
-        class="status"
-        id="saveStatus">
-      </div>
-
-    </div>
-
-  </div>
+<div
+class="status"
+id="loginStatus">
+</div>
 
 </div>
 
 
+
+<!-- ADMIN PANEL -->
+
+<div
+id="adminSection"
+class="hidden">
+
+
+<div class="user">
+
+Logged in as:
+
+<strong id="userEmail"></strong>
+
+</div>
+
+
+<label>
+Teer Type
+</label>
+
+<select id="teerType">
+
+<option value="">
+Select Teer
+</option>
+
+<option value="shillong">
+Shillong Teer
+</option>
+
+<option value="khanapara">
+Khanapara Teer
+</option>
+
+</select>
+
+
+<label>
+Result Date
+</label>
+
+<input
+type="date"
+id="resultDate">
+
+
+<div class="time-info">
+
+Shillong / Khanapara Result Time<br>
+
+<strong>
+First Round: 4:00 PM
+</strong>
+
+<br>
+
+<strong>
+Second Round: 5:00 PM
+</strong>
+
+</div>
+
+
+<label>
+First Round (FR)
+</label>
+
+<input
+type="text"
+id="firstRound"
+placeholder="Enter First Round"
+maxlength="3"
+inputmode="numeric">
+
+
+<label>
+Second Round (SR)
+</label>
+
+<input
+type="text"
+id="secondRound"
+placeholder="Enter Second Round"
+maxlength="3"
+inputmode="numeric">
+
+
+<button id="saveResult">
+💾 Save / Update Result
+</button>
+
+
+<button id="deleteResult">
+🗑️ Delete Result
+</button>
+
+
+<button id="logout">
+Logout
+</button>
+
+
+<div
+class="status"
+id="saveStatus">
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
 <script type="module">
 
-
 import {
-  initializeApp
+initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
 import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  onAuthStateChanged,
-  signOut
+getAuth,
+GoogleAuthProvider,
+signInWithPopup,
+onAuthStateChanged,
+signOut
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc
+getFirestore,
+doc,
+setDoc,
+getDoc,
+deleteDoc
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
 
 
 /* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
-  apiKey:
-    "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
+apiKey:
+"AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
 
-  authDomain:
-    "teer-result-today.firebaseapp.com",
+authDomain:
+"teer-result-today.firebaseapp.com",
 
-  projectId:
-    "teer-result-today",
+projectId:
+"teer-result-today",
 
-  storageBucket:
-    "teer-result-today.firebasestorage.app",
+storageBucket:
+"teer-result-today.firebasestorage.app",
 
-  messagingSenderId:
-    "903009219263",
+messagingSenderId:
+"903009219263",
 
-  appId:
-    "1:903009219263:web:b10f24ed08ad2cc3904c0a",
+appId:
+"1:903009219263:web:b10f24ed08ad2cc3904c0a",
 
-  measurementId:
-    "G-NL95SM0CJM"
+measurementId:
+"G-NL95SM0CJM"
 
 };
+
 
 
 /* INITIALIZE */
 
 const app =
-  initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const auth =
-  getAuth(app);
+getAuth(app);
 
 const db =
-  getFirestore(app);
+getFirestore(app);
 
 const provider =
-  new GoogleAuthProvider();
+new GoogleAuthProvider();
 
 
-/* ADMIN GMAIL */
+
+/*
+ADMIN EMAIL
+ONLY THIS EMAIL CAN USE PANEL
+*/
 
 const ADMIN_EMAIL =
-  "rbdpublicationcompany@gmail.com";
+"rbdpublicationcompany@gmail.com";
+
 
 
 /* GOOGLE LOGIN */
 
 document
-  .getElementById("googleLogin")
-  .onclick = async () => {
+.getElementById("googleLogin")
+.onclick =
+async () => {
 
-    try {
+try{
 
-      await signInWithPopup(
-        auth,
-        provider
-      );
+await signInWithPopup(
+auth,
+provider
+);
 
-    } catch (error) {
+}catch(error){
 
-      document
-        .getElementById("loginStatus")
-        .textContent =
-        "Login failed: " +
-        error.message;
+document
+.getElementById("loginStatus")
+.className =
+"status error";
 
-    }
+document
+.getElementById("loginStatus")
+.textContent =
+"Login failed: " +
+error.message;
 
-  };
+}
+
+};
+
 
 
 /* AUTH STATE */
 
 onAuthStateChanged(
-  auth,
-  async (user) => {
-
-    if (!user) {
-
-      document
-        .getElementById("loginSection")
-        .classList.remove("hidden");
-
-      document
-        .getElementById("adminSection")
-        .classList.add("hidden");
-
-      return;
-
-    }
+auth,
+(user) => {
 
 
-    /* CHECK ADMIN EMAIL */
+if(!user){
 
-    if (
-      !user.email ||
-      user.email.toLowerCase() !==
-      ADMIN_EMAIL.toLowerCase()
-    ) {
+document
+.getElementById("loginSection")
+.classList.remove("hidden");
 
-      document
-        .getElementById("loginStatus")
-        .innerHTML =
-        "<span class='access-denied'>" +
-        "Access Denied. This Gmail is not authorized." +
-        "</span>";
+document
+.getElementById("adminSection")
+.classList.add("hidden");
 
-      document
-        .getElementById("adminSection")
-        .classList.add("hidden");
-
-      document
-        .getElementById("loginSection")
-        .classList.remove("hidden");
-
-      await signOut(auth);
-
-      return;
-
-    }
-
-
-    /* SHOW ADMIN */
-
-    document
-      .getElementById("loginSection")
-      .classList.add("hidden");
-
-    document
-      .getElementById("adminSection")
-      .classList.remove("hidden");
-
-    document
-      .getElementById("userEmail")
-      .textContent =
-      user.email;
-
-  });
-
-
-/* LOAD EXISTING RESULT */
-
-async function loadExistingResult() {
-
-  const teerType =
-    document
-      .getElementById("teerType")
-      .value;
-
-  const date =
-    document
-      .getElementById("resultDate")
-      .value;
-
-
-  if (!teerType || !date) {
-
-    return;
-
-  }
-
-
-  try {
-
-    const resultId =
-      teerType + "_" + date;
-
-
-    const resultRef =
-      doc(
-        db,
-        "results",
-        resultId
-      );
-
-
-    const snapshot =
-      await getDoc(resultRef);
-
-
-    if (snapshot.exists()) {
-
-      const data =
-        snapshot.data();
-
-
-      document
-        .getElementById("firstRound")
-        .value =
-        data.firstRound || "";
-
-
-      document
-        .getElementById("secondRound")
-        .value =
-        data.secondRound || "";
-
-
-      document
-        .getElementById("saveStatus")
-        .textContent =
-        "Old result loaded. You can edit it.";
-
-    } else {
-
-      document
-        .getElementById("firstRound")
-        .value = "";
-
-      document
-        .getElementById("secondRound")
-        .value = "";
-
-      document
-        .getElementById("saveStatus")
-        .textContent =
-        "No result found. Add a new result.";
-
-    }
-
-  } catch (error) {
-
-    document
-      .getElementById("saveStatus")
-      .textContent =
-      "Unable to load result.";
-
-  }
+return;
 
 }
 
 
-/* TEER CHANGE */
+/*
+ONLY ADMIN EMAIL
+*/
+
+if(
+!user.email ||
+user.email.toLowerCase()
+!== ADMIN_EMAIL.toLowerCase()
+){
+
+signOut(auth);
 
 document
-  .getElementById("teerType")
-  .addEventListener(
-    "change",
-    loadExistingResult
-  );
-
-
-/* DATE CHANGE */
+.getElementById("loginStatus")
+.className =
+"status error";
 
 document
-  .getElementById("resultDate")
-  .addEventListener(
-    "change",
-    loadExistingResult
-  );
+.getElementById("loginStatus")
+.textContent =
+"Access denied. Admin email only.";
+
+return;
+
+}
+
+
+document
+.getElementById("loginSection")
+.classList.add("hidden");
+
+document
+.getElementById("adminSection")
+.classList.remove("hidden");
+
+document
+.getElementById("userEmail")
+.textContent =
+user.email;
+
+});
+
+
+
+/* LOAD EXISTING RESULT */
+
+async function loadExistingResult(){
+
+const teerType =
+document
+.getElementById("teerType")
+.value;
+
+const date =
+document
+.getElementById("resultDate")
+.value;
+
+
+if(!teerType || !date){
+
+return;
+
+}
+
+
+try{
+
+const resultId =
+teerType + "_" + date;
+
+
+const resultRef =
+doc(
+db,
+"results",
+resultId
+);
+
+
+const snapshot =
+await getDoc(resultRef);
+
+
+if(snapshot.exists()){
+
+const data =
+snapshot.data();
+
+
+document
+.getElementById("firstRound")
+.value =
+data.firstRound || "";
+
+
+document
+.getElementById("secondRound")
+.value =
+data.secondRound || "";
+
+
+document
+.getElementById("saveStatus")
+.className =
+"status";
+
+
+document
+.getElementById("saveStatus")
+.textContent =
+"Old result loaded. You can edit it.";
+
+}else{
+
+document
+.getElementById("firstRound")
+.value =
+"";
+
+document
+.getElementById("secondRound")
+.value =
+"";
+
+
+document
+.getElementById("saveStatus")
+.className =
+"status";
+
+
+document
+.getElementById("saveStatus")
+.textContent =
+"No result found for this date.";
+
+}
+
+}catch(error){
+
+document
+.getElementById("saveStatus")
+.className =
+"status error";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"Unable to load result.";
+
+}
+
+}
+
+
+
+document
+.getElementById("teerType")
+.addEventListener(
+"change",
+loadExistingResult
+);
+
+
+document
+.getElementById("resultDate")
+.addEventListener(
+"change",
+loadExistingResult
+);
+
 
 
 /* SAVE / UPDATE */
 
 document
-  .getElementById("saveResult")
-  .onclick =
-  async () => {
+.getElementById("saveResult")
+.onclick =
+async () => {
 
 
-    const teerType =
-      document
-        .getElementById("teerType")
-        .value;
+const teerType =
+document
+.getElementById("teerType")
+.value;
 
 
-    const date =
-      document
-        .getElementById("resultDate")
-        .value;
+const date =
+document
+.getElementById("resultDate")
+.value;
 
 
-    const firstRound =
-      document
-        .getElementById("firstRound")
-        .value
-        .trim();
+const firstRound =
+document
+.getElementById("firstRound")
+.value
+.trim();
 
 
-    const secondRound =
-      document
-        .getElementById("secondRound")
-        .value
-        .trim();
+const secondRound =
+document
+.getElementById("secondRound")
+.value
+.trim();
 
 
-    /* VALIDATION */
 
-    if (
-      !teerType ||
-      !date ||
-      !firstRound ||
-      !secondRound
-    ) {
+if(
+!teerType ||
+!date ||
+!firstRound ||
+!secondRound
+){
 
-      document
-        .getElementById("saveStatus")
-        .textContent =
-        "Please fill all fields.";
+document
+.getElementById("saveStatus")
+.className =
+"status error";
 
-      return;
+document
+.getElementById("saveStatus")
+.textContent =
+"Please fill all fields.";
 
-    }
+return;
 
-
-    /* NUMBERS ONLY */
-
-    if (
-      !/^\d+$/.test(firstRound) ||
-      !/^\d+$/.test(secondRound)
-    ) {
-
-      document
-        .getElementById("saveStatus")
-        .textContent =
-        "FR and SR must contain numbers only.";
-
-      return;
-
-    }
+}
 
 
-    try {
+if(
+!/^\d+$/.test(firstRound) ||
+!/^\d+$/.test(secondRound)
+){
+
+document
+.getElementById("saveStatus")
+.className =
+"status error";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"FR and SR must contain numbers only.";
+
+return;
+
+}
 
 
-      const resultId =
-        teerType + "_" + date;
+try{
+
+const resultId =
+teerType + "_" + date;
 
 
-      await setDoc(
+await setDoc(
 
-        doc(
-          db,
-          "results",
-          resultId
-        ),
+doc(
+db,
+"results",
+resultId
+),
 
-        {
+{
 
-          teerType:
-            teerType,
+teerType:
+teerType,
 
-          date:
-            date,
+date:
+date,
 
-          firstRound:
-            firstRound,
+firstRound:
+firstRound,
 
-          secondRound:
-            secondRound,
+secondRound:
+secondRound,
 
-          firstRoundTime:
-            "4:00 PM",
+firstRoundTime:
+"4:00 PM",
 
-          secondRoundTime:
-            "5:00 PM",
+secondRoundTime:
+"5:00 PM",
 
-          updatedAt:
-            new Date().toISOString(),
+updatedAt:
+new Date().toISOString(),
 
-          updatedBy:
-            ADMIN_EMAIL
+updatedBy:
+ADMIN_EMAIL
 
-        },
+},
 
-        {
-          merge: true
-        }
+{
+merge:true
+}
 
-      );
-
-
-      document
-        .getElementById("saveStatus")
-        .textContent =
-        "Result saved / updated successfully!";
+);
 
 
-    } catch (error) {
+document
+.getElementById("saveStatus")
+.className =
+"status success";
 
-      document
-        .getElementById("saveStatus")
-        .textContent =
-        "Save failed: " +
-        error.message;
+document
+.getElementById("saveStatus")
+.textContent =
+"Result saved / updated successfully!";
 
-    }
 
-  };
+
+}catch(error){
+
+document
+.getElementById("saveStatus")
+.className =
+"status error";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"Save failed: " +
+error.message;
+
+}
+
+};
+
+
+
+/* DELETE RESULT */
+
+document
+.getElementById("deleteResult")
+.onclick =
+async () => {
+
+
+const teerType =
+document
+.getElementById("teerType")
+.value;
+
+
+const date =
+document
+.getElementById("resultDate")
+.value;
+
+
+if(!teerType || !date){
+
+document
+.getElementById("saveStatus")
+.className =
+"status error";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"Please select Teer and Date first.";
+
+return;
+
+}
+
+
+const resultId =
+teerType + "_" + date;
+
+
+const confirmDelete =
+confirm(
+
+"Are you sure you want to DELETE this result?\n\n" +
+
+teerType.toUpperCase() +
+"\nDate: " +
+date
+
+);
+
+
+if(!confirmDelete){
+
+return;
+
+}
+
+
+try{
+
+await deleteDoc(
+
+doc(
+db,
+"results",
+resultId
+)
+
+);
+
+
+document
+.getElementById("firstRound")
+.value =
+"";
+
+document
+.getElementById("secondRound")
+.value =
+"";
+
+
+document
+.getElementById("saveStatus")
+.className =
+"status success";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"Result deleted successfully!";
+
+
+}catch(error){
+
+document
+.getElementById("saveStatus")
+.className =
+"status error";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"Delete failed: " +
+error.message;
+
+}
+
+};
+
 
 
 /* LOGOUT */
 
 document
-  .getElementById("logout")
-  .onclick =
-  async () => {
+.getElementById("logout")
+.onclick =
+async () => {
 
-    await signOut(auth);
+await signOut(auth);
 
-  };
+};
 
 </script>
 
 </body>
-
 </html>
