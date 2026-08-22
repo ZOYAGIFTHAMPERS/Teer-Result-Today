@@ -84,6 +84,11 @@ button{
   color:white;
 }
 
+#todayOff{
+  background:#f59e0b;
+  color:white;
+}
+
 #deleteResult{
   background:#dc2626;
   color:white;
@@ -122,6 +127,18 @@ button{
   line-height:1.5;
 }
 
+.sunday-warning{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#c2410c;
+  padding:14px;
+  border-radius:10px;
+  margin-top:15px;
+  text-align:center;
+  font-weight:bold;
+  line-height:1.6;
+}
+
 .time-box{
   background:#f8fafc;
   padding:12px;
@@ -157,12 +174,39 @@ button{
   color:#64748b;
 }
 
+
+/* SOCIAL */
+
+.social-box{
+  margin-top:20px;
+  padding:15px;
+  background:#f8fafc;
+  border-radius:12px;
+  text-align:center;
+}
+
+.social-box h3{
+  margin:0 0 10px;
+  color:#312e81;
+}
+
+.telegram-btn{
+  display:block;
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  border-radius:9px;
+  color:white;
+  background:#229ED9;
+  text-decoration:none;
+  font-weight:bold;
+}
+
 </style>
 </head>
 
 
 <body>
-
 
 <div class="container">
 
@@ -183,20 +227,14 @@ Admin Login with Google
 🔐 Login with Google
 </button>
 
-<div
-id="loginStatus"
-class="status">
-</div>
+<div id="loginStatus" class="status"></div>
 
 </div>
-
 
 
 <!-- ADMIN -->
 
-<div
-id="adminSection"
-class="hidden">
+<div id="adminSection" class="hidden">
 
 
 <div class="user">
@@ -236,7 +274,6 @@ Shillong + Khanapara
 </select>
 
 
-
 <!-- DATE -->
 
 <label>
@@ -247,6 +284,22 @@ Shillong + Khanapara
 type="date"
 id="resultDate">
 
+
+<!-- SUNDAY -->
+
+<div
+id="sundayWarning"
+class="sunday-warning hidden">
+
+🛑 Sunday — Today Off
+
+<br>
+
+<span class="small">
+आज Teer result नहीं है।
+</span>
+
+</div>
 
 
 <!-- CURRENT RESULT -->
@@ -280,7 +333,6 @@ Khanapara SR:
 </div>
 
 
-
 <!-- ROUND -->
 
 <label>
@@ -304,7 +356,6 @@ SR — Second Round Only
 </select>
 
 
-
 <div class="time-box">
 
 ⏰ First Round: <strong>4:00 PM</strong>
@@ -316,8 +367,7 @@ SR — Second Round Only
 </div>
 
 
-
-<!-- SHILLONG INPUT -->
+<!-- SHILLONG -->
 
 <div
 id="shillongBox"
@@ -350,8 +400,7 @@ placeholder="Enter SR">
 </div>
 
 
-
-<!-- KHANAPARA INPUT -->
+<!-- KHANAPARA -->
 
 <div
 id="khanaparaBox"
@@ -384,12 +433,11 @@ placeholder="Enter SR">
 </div>
 
 
-
 <div class="info">
 
 💡 <strong>Manual Update:</strong><br>
 
-अगर सिर्फ FR बदलना है तो Update Type में
+अगर सिर्फ FR बदलना है तो
 <strong>FR — First Round Only</strong> चुनें।
 
 <br><br>
@@ -399,10 +447,17 @@ placeholder="Enter SR">
 
 <br><br>
 
-जिस field को खाली छोड़ेंगे, उसका पुराना result नहीं बदलेगा।
+अगर किसी दिन result नहीं है, तो
+<strong>🛑 Today Off / XX</strong> बटन दबाएँ।
 
 </div>
 
+
+<!-- TODAY OFF -->
+
+<button id="todayOff">
+🛑 Today Off / Save XX
+</button>
 
 
 <!-- SAVE -->
@@ -417,6 +472,25 @@ placeholder="Enter SR">
 <button id="deleteResult">
 🗑️ Delete Selected Result
 </button>
+
+
+<!-- TELEGRAM -->
+
+<div class="social-box">
+
+<h3>📲 Join Our Telegram</h3>
+
+<a
+href="https://t.me/shillong_khanapara_teer_02"
+target="_blank"
+rel="noopener noreferrer"
+class="telegram-btn">
+
+📲 Join Telegram
+
+</a>
+
+</div>
 
 
 <!-- LOGOUT -->
@@ -439,9 +513,7 @@ class="status">
 </div>
 
 
-
 <script type="module">
-
 
 import {
 initializeApp
@@ -470,7 +542,6 @@ deleteDoc
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-
 
 
 /* FIREBASE */
@@ -514,12 +585,10 @@ const provider =
 new GoogleAuthProvider();
 
 
-
 /* ONLY ADMIN */
 
 const ADMIN_EMAIL =
 "rbdpublicationcompany@gmail.com";
-
 
 
 /* ELEMENTS */
@@ -546,8 +615,7 @@ const khanaparaSR =
 document.getElementById("khanaparaSR");
 
 
-
-/* TODAY DATE */
+/* INDIA DATE */
 
 function getTodayIndia(){
 
@@ -566,8 +634,7 @@ let year = "";
 let month = "";
 let day = "";
 
-parts.forEach(
-part => {
+parts.forEach(part => {
 
 if(part.type === "year")
 year = part.value;
@@ -588,6 +655,44 @@ return year + "-" + month + "-" + day;
 resultDate.value =
 getTodayIndia();
 
+
+/* SUNDAY CHECK */
+
+function isSunday(dateString){
+
+if(!dateString)
+return false;
+
+const date =
+new Date(
+dateString + "T00:00:00"
+);
+
+return date.getDay() === 0;
+
+}
+
+
+function updateSundayNotice(){
+
+const warning =
+document.getElementById("sundayWarning");
+
+if(isSunday(resultDate.value)){
+
+warning.classList.remove("hidden");
+
+}
+else{
+
+warning.classList.add("hidden");
+
+}
+
+}
+
+
+updateSundayNotice();
 
 
 /* LOGIN */
@@ -621,7 +726,6 @@ error.message;
 }
 
 };
-
 
 
 /* AUTH */
@@ -684,14 +788,12 @@ user.email;
 });
 
 
-
-/* HIDE / SHOW INPUT BOXES */
+/* SHOW / HIDE */
 
 function updateBoxes(){
 
 const type =
 teerType.value;
-
 
 const shillongBox =
 document.getElementById("shillongBox");
@@ -748,12 +850,16 @@ await loadResults();
 
 resultDate.addEventListener(
 "change",
-loadResults
-);
+async () => {
+
+updateSundayNotice();
+
+await loadResults();
+
+});
 
 
-
-/* LOAD EXISTING RESULTS */
+/* GET RESULT */
 
 async function getResult(type){
 
@@ -763,10 +869,8 @@ resultDate.value;
 if(!date)
 return null;
 
-
 const id =
 type + "_" + date;
-
 
 const ref =
 doc(
@@ -775,10 +879,8 @@ db,
 id
 );
 
-
 const snapshot =
 await getDoc(ref);
-
 
 if(snapshot.exists()){
 
@@ -791,21 +893,17 @@ return null;
 }
 
 
+/* LOAD */
 
 async function loadResults(){
 
 const type =
 teerType.value;
 
-if(!type || !resultDate.value){
-
+if(!type || !resultDate.value)
 return;
 
-}
-
-
 clearInputs();
-
 
 try{
 
@@ -815,8 +913,6 @@ await getResult("shillong");
 const khanapara =
 await getResult("khanapara");
 
-
-/* SHOW CURRENT */
 
 document
 .getElementById("currentResult")
@@ -846,10 +942,6 @@ document
 .textContent =
 khanapara?.secondRound || "--";
 
-
-/*
-PUT OLD VALUES IN INPUTS
-*/
 
 if(shillong){
 
@@ -881,7 +973,7 @@ document
 document
 .getElementById("saveStatus")
 .textContent =
-"Existing result loaded. You can manually change it.";
+"Existing result loaded.";
 
 }
 catch(error){
@@ -891,7 +983,6 @@ console.error(error);
 }
 
 }
-
 
 
 /* CLEAR */
@@ -907,7 +998,6 @@ khanaparaSR.value = "";
 }
 
 
-
 /* VALID NUMBER */
 
 function validNumber(value){
@@ -917,8 +1007,7 @@ return /^\d+$/.test(value);
 }
 
 
-
-/* SAVE ONE RESULT */
+/* SAVE ONE */
 
 async function saveOne(
 type,
@@ -934,16 +1023,6 @@ const id =
 type + "_" + date;
 
 
-/*
-IMPORTANT:
-
-If FR is empty,
-keep old FR.
-
-If SR is empty,
-keep old SR.
-*/
-
 const finalFR =
 fr !== ""
 ? fr
@@ -955,11 +1034,6 @@ sr !== ""
 ? sr
 : (oldData?.secondRound || "");
 
-
-/*
-For a completely new result,
-at least one value required.
-*/
 
 if(
 finalFR === "" &&
@@ -993,6 +1067,10 @@ firstRoundTime:"4:00 PM",
 
 secondRoundTime:"5:00 PM",
 
+isTodayOff:
+finalFR === "XX" &&
+finalSR === "XX",
+
 updatedAt:
 new Date().toISOString(),
 
@@ -1013,14 +1091,129 @@ return true;
 }
 
 
+/* TODAY OFF */
 
-/* SAVE BUTTON */
+document
+.getElementById("todayOff")
+.onclick =
+async () => {
+
+const type =
+teerType.value;
+
+const date =
+resultDate.value;
+
+
+if(!type || !date){
+
+document
+.getElementById("saveStatus")
+.className =
+"status error";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"Please select Teer and Date.";
+
+return;
+
+}
+
+
+const confirmOff =
+confirm(
+
+"आज का result OFF / XX save करना है?\n\n" +
+
+"Teer: " +
+type.toUpperCase() +
+
+"\nDate: " +
+date +
+
+"\n\nFR = XX\nSR = XX"
+
+);
+
+
+if(!confirmOff)
+return;
+
+
+try{
+
+
+if(
+type === "shillong" ||
+type === "both"
+){
+
+await saveOne(
+"shillong",
+await getResult("shillong"),
+"XX",
+"XX"
+);
+
+}
+
+
+if(
+type === "khanapara" ||
+type === "both"
+){
+
+await saveOne(
+"khanapara",
+await getResult("khanapara"),
+"XX",
+"XX"
+);
+
+}
+
+
+document
+.getElementById("saveStatus")
+.className =
+"status success";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"🛑 Today Off saved successfully — XX / XX";
+
+
+await loadResults();
+
+}
+catch(error){
+
+console.error(error);
+
+document
+.getElementById("saveStatus")
+.className =
+"status error";
+
+document
+.getElementById("saveStatus")
+.textContent =
+"❌ " + error.message;
+
+}
+
+};
+
+
+/* SAVE RESULT */
 
 document
 .getElementById("saveResult")
 .onclick =
 async () => {
-
 
 const type =
 teerType.value;
@@ -1051,9 +1244,6 @@ return;
 
 try{
 
-
-/* LOAD OLD DATA */
-
 const shillongOld =
 await getResult("shillong");
 
@@ -1061,42 +1251,12 @@ const khanaparaOld =
 await getResult("khanapara");
 
 
-
-/*
-VALIDATE ONLY FIELDS
-THAT USER WANTS TO UPDATE
-*/
-
-if(type === "shillong" ||
-type === "both"){
+/* VALIDATE */
 
 if(
-mode === "fr" &&
-shillongFR.value !== "" &&
-!validNumber(shillongFR.value)
+type === "shillong" ||
+type === "both"
 ){
-
-throw new Error(
-"Shillong FR must contain numbers only."
-);
-
-}
-
-
-if(
-mode === "sr" &&
-shillongSR.value !== "" &&
-!validNumber(shillongSR.value)
-){
-
-throw new Error(
-"Shillong SR must contain numbers only."
-);
-
-}
-
-
-if(mode === "both"){
 
 if(
 shillongFR.value !== "" &&
@@ -1122,40 +1282,11 @@ throw new Error(
 
 }
 
-}
-
-
-
-if(type === "khanapara" ||
-type === "both"){
 
 if(
-mode === "fr" &&
-khanaparaFR.value !== "" &&
-!validNumber(khanaparaFR.value)
+type === "khanapara" ||
+type === "both"
 ){
-
-throw new Error(
-"Khanapara FR must contain numbers only."
-);
-
-}
-
-
-if(
-mode === "sr" &&
-khanaparaSR.value !== "" &&
-!validNumber(khanaparaSR.value)
-){
-
-throw new Error(
-"Khanapara SR must contain numbers only."
-);
-
-}
-
-
-if(mode === "both"){
 
 if(
 khanaparaFR.value !== "" &&
@@ -1181,13 +1312,8 @@ throw new Error(
 
 }
 
-}
 
-
-
-/*
-SAVE SHILLONG
-*/
+/* SHILLONG */
 
 if(
 type === "shillong" ||
@@ -1198,10 +1324,6 @@ let fr = "";
 let sr = "";
 
 
-/*
-FR ONLY
-*/
-
 if(mode === "fr"){
 
 fr =
@@ -1211,11 +1333,6 @@ sr = "";
 
 }
 
-
-/*
-SR ONLY
-*/
-
 else if(mode === "sr"){
 
 fr = "";
@@ -1224,11 +1341,6 @@ sr =
 shillongSR.value;
 
 }
-
-
-/*
-BOTH
-*/
 
 else{
 
@@ -1251,10 +1363,7 @@ sr
 }
 
 
-
-/*
-SAVE KHANAPARA
-*/
+/* KHANAPARA */
 
 if(
 type === "khanapara" ||
@@ -1304,7 +1413,6 @@ sr
 }
 
 
-
 document
 .getElementById("saveStatus")
 .className =
@@ -1316,10 +1424,7 @@ document
 "✅ Result saved / updated successfully!";
 
 
-/* REFRESH CURRENT RESULT */
-
 await loadResults();
-
 
 }
 catch(error){
@@ -1341,14 +1446,12 @@ document
 };
 
 
-
 /* DELETE */
 
 document
 .getElementById("deleteResult")
 .onclick =
 async () => {
-
 
 const type =
 teerType.value;
@@ -1390,11 +1493,8 @@ date
 );
 
 
-if(!confirmDelete){
-
+if(!confirmDelete)
 return;
-
-}
 
 
 try{
@@ -1430,7 +1530,6 @@ document
 
 await loadResults();
 
-
 }
 catch(error){
 
@@ -1450,7 +1549,6 @@ error.message;
 };
 
 
-
 /* LOGOUT */
 
 document
@@ -1461,7 +1559,6 @@ async () => {
 await signOut(auth);
 
 };
-
 
 
 /* INITIAL */
