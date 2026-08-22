@@ -1,10 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teer Result Today - Live Result</title>
+
+  <title>Teer Result Today - Shillong & Khanapara Teer</title>
+
+  <meta name="description"
+    content="Shillong Teer and Khanapara Teer today's live result with first round and second round timings.">
 
   <style>
     * {
@@ -32,27 +35,33 @@
 
     header p {
       margin: 8px 0 0;
-      opacity: 0.85;
+      opacity: .85;
     }
 
     .container {
       max-width: 700px;
-      margin: 30px auto;
+      margin: 25px auto;
       padding: 0 15px;
     }
 
     .card {
       background: white;
       border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08);
       text-align: center;
     }
 
+    .card h2 {
+      margin: 0 0 10px;
+    }
+
     .date {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: bold;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
+      color: #555;
     }
 
     .result-box {
@@ -64,12 +73,18 @@
     .result {
       background: #f3f4f6;
       border-radius: 12px;
-      padding: 20px 10px;
+      padding: 18px 10px;
     }
 
-    .result h2 {
-      margin: 0 0 12px;
-      font-size: 18px;
+    .result h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .time {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 8px;
     }
 
     .number {
@@ -78,14 +93,29 @@
     }
 
     .updated {
-      margin-top: 20px;
-      color: #666;
+      margin-top: 18px;
+      color: #16a34a;
       font-size: 14px;
+      font-weight: bold;
     }
 
-    .loading {
-      padding: 20px;
-      color: #666;
+    .no-result {
+      color: #777;
+    }
+
+    .whatsapp {
+      display: block;
+      width: 100%;
+      max-width: 700px;
+      margin: 10px auto 25px;
+      padding: 14px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
     }
 
     footer {
@@ -95,7 +125,7 @@
       font-size: 13px;
     }
 
-    @media(max-width: 500px) {
+    @media(max-width:500px) {
       .result-box {
         grid-template-columns: 1fr;
       }
@@ -107,111 +137,357 @@
 
 <header>
   <h1>TEER RESULT TODAY</h1>
-  <p>Live Result Website</p>
+  <p>Shillong Teer & Khanapara Teer Live Result</p>
 </header>
 
+
 <div class="container">
+
+  <!-- SHILLONG -->
+
   <div class="card">
 
-    <div class="date" id="resultDate">
+    <h2>Shillong Teer</h2>
+
+    <div class="date" id="shillongDate">
       Loading result...
     </div>
 
     <div class="result-box">
 
       <div class="result">
-        <h2>FIRST ROUND</h2>
-        <div class="number" id="firstRound">--</div>
+
+        <h3>FIRST ROUND</h3>
+
+        <div class="time">
+          Result Time: 4:00 PM
+        </div>
+
+        <div class="number" id="shillongFirst">
+          --
+        </div>
+
       </div>
 
+
       <div class="result">
-        <h2>SECOND ROUND</h2>
-        <div class="number" id="secondRound">--</div>
+
+        <h3>SECOND ROUND</h3>
+
+        <div class="time">
+          Result Time: 5:00 PM
+        </div>
+
+        <div class="number" id="shillongSecond">
+          --
+        </div>
+
       </div>
 
     </div>
 
-    <div class="updated" id="updated">
-      Waiting for latest result...
+    <div class="updated" id="shillongUpdated">
+      Waiting for today's result...
     </div>
 
   </div>
+
+
+  <!-- KHANAPARA -->
+
+  <div class="card">
+
+    <h2>Khanapara Teer</h2>
+
+    <div class="date" id="khanaparaDate">
+      Loading result...
+    </div>
+
+    <div class="result-box">
+
+      <div class="result">
+
+        <h3>FIRST ROUND</h3>
+
+        <div class="time">
+          Result Time: 4:00 PM
+        </div>
+
+        <div class="number" id="khanaparaFirst">
+          --
+        </div>
+
+      </div>
+
+
+      <div class="result">
+
+        <h3>SECOND ROUND</h3>
+
+        <div class="time">
+          Result Time: 5:00 PM
+        </div>
+
+        <div class="number" id="khanaparaSecond">
+          --
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="updated" id="khanaparaUpdated">
+      Waiting for today's result...
+    </div>
+
+  </div>
+
+
+  <!-- WHATSAPP -->
+
+  <a
+    class="whatsapp"
+    href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello%20Gutti"
+    target="_blank"
+    rel="noopener">
+
+    💬 WhatsApp Gutti
+
+  </a>
+
 </div>
+
 
 <footer>
   © 2026 Teer Result Today
 </footer>
 
 
-<!-- Firebase -->
 <script type="module">
 
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-  import {
-    getFirestore,
-    doc,
-    onSnapshot
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-  // ==========================================
-  // PASTE YOUR FIREBASE CONFIG HERE
-  // ==========================================
-
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.firebasestorage.app",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
+import {
+  getFirestore,
+  doc,
+  onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+/* FIREBASE CONFIG */
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
+
+  authDomain:
+    "teer-result-today.firebaseapp.com",
+
+  projectId:
+    "teer-result-today",
+
+  storageBucket:
+    "teer-result-today.firebasestorage.app",
+
+  messagingSenderId:
+    "903009219263",
+
+  appId:
+    "1:903009219263:web:b10f24ed08ad2cc3904c0a",
+
+  measurementId:
+    "G-NL95SM0CJM"
+
+};
 
 
-  // Latest result document
-  const resultRef = doc(db, "results", "latest");
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
 
 
-  onSnapshot(resultRef, (snapshot) => {
+/* TODAY DATE - INDIA */
 
-    if (!snapshot.exists()) {
-      document.getElementById("resultDate").textContent =
-        "No result available";
+function getIndiaDate() {
 
-      document.getElementById("firstRound").textContent = "--";
-      document.getElementById("secondRound").textContent = "--";
+  const formatter =
+    new Intl.DateTimeFormat(
+      "en-CA",
+      {
+        timeZone: "Asia/Kolkata",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }
+    );
 
-      return;
+  return formatter.format(new Date());
+
+}
+
+
+const todayDate = getIndiaDate();
+
+
+/* FORMAT DATE */
+
+function formatDate(dateString) {
+
+  if (!dateString) {
+    return "";
+  }
+
+  const parts =
+    dateString.split("-");
+
+  return `${parts[2]}-${parts[1]}-${parts[0]}`;
+
+}
+
+
+/* LOAD RESULT */
+
+function loadResult(teerType) {
+
+  const resultId =
+    teerType + "_" + todayDate;
+
+  const resultRef =
+    doc(db, "results", resultId);
+
+
+  onSnapshot(
+    resultRef,
+
+    (snapshot) => {
+
+      if (!snapshot.exists()) {
+
+        if (teerType === "shillong") {
+
+          document.getElementById(
+            "shillongDate"
+          ).textContent =
+            formatDate(todayDate);
+
+          document.getElementById(
+            "shillongFirst"
+          ).textContent = "--";
+
+          document.getElementById(
+            "shillongSecond"
+          ).textContent = "--";
+
+          document.getElementById(
+            "shillongUpdated"
+          ).textContent =
+            "Waiting for today's result...";
+
+        }
+
+
+        if (teerType === "khanapara") {
+
+          document.getElementById(
+            "khanaparaDate"
+          ).textContent =
+            formatDate(todayDate);
+
+          document.getElementById(
+            "khanaparaFirst"
+          ).textContent = "--";
+
+          document.getElementById(
+            "khanaparaSecond"
+          ).textContent = "--";
+
+          document.getElementById(
+            "khanaparaUpdated"
+          ).textContent =
+            "Waiting for today's result...";
+
+        }
+
+        return;
+      }
+
+
+      const data =
+        snapshot.data();
+
+
+      if (teerType === "shillong") {
+
+        document.getElementById(
+          "shillongDate"
+        ).textContent =
+          formatDate(data.date);
+
+        document.getElementById(
+          "shillongFirst"
+        ).textContent =
+          data.firstRound || "--";
+
+        document.getElementById(
+          "shillongSecond"
+        ).textContent =
+          data.secondRound || "--";
+
+        document.getElementById(
+          "shillongUpdated"
+        ).textContent =
+          "● Live Result Updated";
+
+      }
+
+
+      if (teerType === "khanapara") {
+
+        document.getElementById(
+          "khanaparaDate"
+        ).textContent =
+          formatDate(data.date);
+
+        document.getElementById(
+          "khanaparaFirst"
+        ).textContent =
+          data.firstRound || "--";
+
+        document.getElementById(
+          "khanaparaSecond"
+        ).textContent =
+          data.secondRound || "--";
+
+        document.getElementById(
+          "khanaparaUpdated"
+        ).textContent =
+          "● Live Result Updated";
+
+      }
+
+    },
+
+
+    (error) => {
+
+      console.error(
+        teerType,
+        error
+      );
+
     }
+  );
 
-    const data = snapshot.data();
+}
 
-    document.getElementById("resultDate").textContent =
-      data.date || "Today's Result";
 
-    document.getElementById("firstRound").textContent =
-      data.firstRound || "--";
+/* START */
 
-    document.getElementById("secondRound").textContent =
-      data.secondRound || "--";
+loadResult("shillong");
 
-    document.getElementById("updated").textContent =
-      "Latest result updated live";
-
-  }, (error) => {
-
-    console.error(error);
-
-    document.getElementById("updated").textContent =
-      "Unable to load result";
-
-  });
+loadResult("khanapara");
 
 </script>
 
