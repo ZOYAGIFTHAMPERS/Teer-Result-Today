@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +29,7 @@
       text-align: center;
     }
 
-    input {
+    input, select {
       width: 100%;
       padding: 13px;
       margin: 8px 0 15px;
@@ -38,6 +37,7 @@
       border-radius: 8px;
       font-size: 16px;
       box-sizing: border-box;
+      background: white;
     }
 
     button {
@@ -77,6 +77,7 @@
 
     label {
       font-weight: bold;
+      display: block;
     }
 
     .user {
@@ -93,6 +94,7 @@
 
     <h1>Admin Panel</h1>
 
+    <!-- LOGIN -->
     <div id="loginSection">
 
       <p style="text-align:center;">
@@ -108,6 +110,7 @@
     </div>
 
 
+    <!-- ADMIN PANEL -->
     <div id="adminSection" class="hidden">
 
       <div class="user">
@@ -115,22 +118,54 @@
         <strong id="userEmail"></strong>
       </div>
 
+
+      <!-- TEER TYPE -->
+      <label>Teer Type</label>
+
+      <select id="teerType">
+        <option value="">Select Teer</option>
+        <option value="shillong">Shillong Teer</option>
+        <option value="khanapara">Khanapara Teer</option>
+      </select>
+
+
+      <!-- DATE -->
       <label>Date</label>
+
       <input type="date" id="resultDate">
 
-      <label>First Round</label>
-      <input type="text" id="firstRound" placeholder="Enter First Round">
 
-      <label>Second Round</label>
-      <input type="text" id="secondRound" placeholder="Enter Second Round">
+      <!-- FIRST ROUND -->
+      <label>First Round (FR)</label>
+
+      <input
+        type="text"
+        id="firstRound"
+        placeholder="Enter First Round"
+        maxlength="3"
+      >
+
+
+      <!-- SECOND ROUND -->
+      <label>Second Round (SR)</label>
+
+      <input
+        type="text"
+        id="secondRound"
+        placeholder="Enter Second Round"
+        maxlength="3"
+      >
+
 
       <button id="saveResult">
         Save Result
       </button>
 
+
       <button id="logout">
         Logout
       </button>
+
 
       <div class="status" id="saveStatus"></div>
 
@@ -162,6 +197,8 @@ import {
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
+/* FIREBASE CONFIG */
+
 const firebaseConfig = {
   apiKey: "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
   authDomain: "teer-result-today.firebaseapp.com",
@@ -173,6 +210,8 @@ const firebaseConfig = {
 };
 
 
+/* INITIALIZE FIREBASE */
+
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
@@ -181,6 +220,8 @@ const db = getFirestore(app);
 
 const provider = new GoogleAuthProvider();
 
+
+/* GOOGLE LOGIN */
 
 document.getElementById("googleLogin").onclick = async () => {
 
@@ -197,6 +238,8 @@ document.getElementById("googleLogin").onclick = async () => {
 
 };
 
+
+/* AUTH STATE */
 
 onAuthStateChanged(auth, (user) => {
 
@@ -224,7 +267,12 @@ onAuthStateChanged(auth, (user) => {
 });
 
 
+/* SAVE RESULT */
+
 document.getElementById("saveResult").onclick = async () => {
+
+  const teerType =
+    document.getElementById("teerType").value;
 
   const date =
     document.getElementById("resultDate").value;
@@ -236,7 +284,9 @@ document.getElementById("saveResult").onclick = async () => {
     document.getElementById("secondRound").value.trim();
 
 
-  if (!date || !firstRound || !secondRound) {
+  /* VALIDATION */
+
+  if (!teerType || !date || !firstRound || !secondRound) {
 
     document.getElementById("saveStatus").textContent =
       "Please fill all fields.";
@@ -245,11 +295,38 @@ document.getElementById("saveResult").onclick = async () => {
   }
 
 
+  /* ALLOW NUMBERS ONLY */
+
+  if (!/^\d+$/.test(firstRound) ||
+      !/^\d+$/.test(secondRound)) {
+
+    document.getElementById("saveStatus").textContent =
+      "FR and SR must contain numbers only.";
+
+    return;
+  }
+
+
   try {
 
+    /*
+      Each Teer + Date gets its own document.
+
+      Example:
+
+      results/shillong_2026-08-22
+
+      results/khanapara_2026-08-22
+    */
+
+    const resultId =
+      teerType + "_" + date;
+
+
     await setDoc(
-      doc(db, "results", "latest"),
+      doc(db, "results", resultId),
       {
+        teerType: teerType,
         date: date,
         firstRound: firstRound,
         secondRound: secondRound,
@@ -257,8 +334,16 @@ document.getElementById("saveResult").onclick = async () => {
       }
     );
 
+
     document.getElementById("saveStatus").textContent =
       "Result saved successfully!";
+
+
+    /* CLEAR ROUND FIELDS */
+
+    document.getElementById("firstRound").value = "";
+    document.getElementById("secondRound").value = "";
+
 
   } catch (error) {
 
@@ -269,6 +354,8 @@ document.getElementById("saveResult").onclick = async () => {
 
 };
 
+
+/* LOGOUT */
 
 document.getElementById("logout").onclick = async () => {
 
