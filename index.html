@@ -1,150 +1,314 @@
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Teer Result Today - Shillong & Khanapara Teer</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Shillong Teer and Khanapara Teer today's result, first round and second round live updates.">
+<title>Teer Result Today | Shillong & Khanapara Teer</title>
+
+<meta name="description"
+content="Shillong Teer and Khanapara Teer latest result, previous results, first round and second round timings.">
 
 <style>
 
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#eef2ff,#fff7ed,#ecfdf5);
+  color:#172033;
 }
 
-header {
-  background: #111827;
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
+/* HEADER */
+
+header{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed,#db2777);
+  color:white;
+  text-align:center;
+  padding:32px 15px;
+  box-shadow:0 5px 20px rgba(79,70,229,.25);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 30px;
+header h1{
+  margin:0;
+  font-size:32px;
+  letter-spacing:.5px;
 }
 
-header p {
-  margin: 8px 0 0;
-  opacity: .85;
+header p{
+  margin:9px 0 0;
+  font-size:15px;
+  opacity:.92;
 }
 
-.container {
-  max-width: 700px;
-  margin: 25px auto;
-  padding: 0 15px;
+/* CONTAINER */
+
+.container{
+  max-width:850px;
+  margin:25px auto;
+  padding:0 15px;
 }
 
-.card {
-  background: white;
-  border-radius: 15px;
-  padding: 22px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 18px rgba(0,0,0,.08);
-  text-align: center;
+/* TODAY TITLE */
+
+.section-title{
+  text-align:center;
+  margin:10px 0 18px;
 }
 
-.card h2 {
-  margin: 0 0 10px;
+.section-title h2{
+  margin:0;
+  color:#312e81;
 }
 
-.date {
-  font-size: 17px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #555;
+.section-title p{
+  margin:7px 0;
+  color:#64748b;
 }
 
-.result-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+/* RESULT CARD */
+
+.card{
+  background:rgba(255,255,255,.96);
+  border-radius:20px;
+  padding:23px;
+  margin-bottom:22px;
+  box-shadow:0 8px 25px rgba(15,23,42,.10);
+  border:1px solid rgba(255,255,255,.8);
 }
 
-.result {
-  background: #f3f4f6;
-  border-radius: 12px;
-  padding: 18px 10px;
+/* CARD HEADER */
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
 }
 
-.result h3 {
-  margin: 0 0 8px;
-  font-size: 17px;
+.card-header h2{
+  margin:0;
+  font-size:23px;
 }
 
-.time {
-  color: #555;
-  font-size: 14px;
-  margin-bottom: 8px;
+.live{
+  background:#dcfce7;
+  color:#15803d;
+  padding:6px 10px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:bold;
 }
 
-.number {
-  font-size: 42px;
-  font-weight: bold;
+.date{
+  color:#64748b;
+  font-weight:bold;
+  margin-bottom:18px;
 }
 
-.updated {
-  margin-top: 18px;
-  color: #16a34a;
-  font-size: 14px;
-  font-weight: bold;
+/* RESULTS */
+
+.result-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-.whatsapp {
-  display: block;
-  width: 100%;
-  max-width: 700px;
-  margin: 10px auto 25px;
-  padding: 14px;
-  background: #25D366;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 17px;
-  font-weight: bold;
+.result{
+  padding:20px 12px;
+  border-radius:16px;
+  text-align:center;
+  color:white;
 }
 
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #777;
-  font-size: 13px;
+.first{
+  background:linear-gradient(135deg,#2563eb,#06b6d4);
 }
 
-@media(max-width:500px) {
+.second{
+  background:linear-gradient(135deg,#f97316,#db2777);
+}
 
-  .result-box {
-    grid-template-columns: 1fr;
+.result h3{
+  margin:0 0 7px;
+  font-size:16px;
+}
+
+.time{
+  font-size:13px;
+  opacity:.9;
+  margin-bottom:8px;
+}
+
+.number{
+  font-size:44px;
+  font-weight:800;
+}
+
+.updated{
+  text-align:center;
+  margin-top:15px;
+  color:#16a34a;
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+  display:block;
+  text-decoration:none;
+  text-align:center;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+  color:white;
+  padding:15px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:bold;
+  box-shadow:0 6px 18px rgba(22,163,74,.25);
+  margin:10px 0 30px;
+}
+
+.whatsapp:hover{
+  opacity:.92;
+}
+
+/* HISTORY */
+
+.history-title{
+  text-align:center;
+  margin:35px 0 20px;
+}
+
+.history-title h2{
+  margin:0;
+  color:#312e81;
+}
+
+.history-title p{
+  color:#64748b;
+  margin:7px 0;
+}
+
+.history-card{
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:20px;
+  box-shadow:0 6px 20px rgba(15,23,42,.08);
+}
+
+.history-card h3{
+  margin:0 0 15px;
+  color:#4338ca;
+}
+
+/* TABLE */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:500px;
+}
+
+th{
+  background:#4f46e5;
+  color:white;
+  padding:11px;
+  font-size:14px;
+}
+
+td{
+  padding:11px;
+  text-align:center;
+  border-bottom:1px solid #e5e7eb;
+  font-size:14px;
+}
+
+tr:nth-child(even){
+  background:#f8fafc;
+}
+
+.fr{
+  color:#2563eb;
+  font-weight:bold;
+}
+
+.sr{
+  color:#db2777;
+  font-weight:bold;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  padding:18px;
+  color:#64748b;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:25px 15px;
+  color:#64748b;
+  font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  header h1{
+    font-size:25px;
   }
 
-  header h1 {
-    font-size: 25px;
+  .result-box{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:17px;
+  }
+
+  .number{
+    font-size:40px;
+  }
+
+  .card-header{
+    align-items:flex-start;
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-<h1>TEER RESULT TODAY</h1>
+<h1>
+TEER RESULT TODAY
+</h1>
 
 <p>
-Shillong Teer & Khanapara Teer Live Result
+Shillong Teer & Khanapara Teer Live Results
 </p>
 
 </header>
@@ -153,104 +317,182 @@ Shillong Teer & Khanapara Teer Live Result
 <div class="container">
 
 
-<!-- SHILLONG TEER -->
+<div class="section-title">
+
+<h2>Today's Result</h2>
+
+<p>
+Live result updated from Admin Panel
+</p>
+
+</div>
+
+
+<!-- SHILLONG -->
 
 <div class="card">
 
-<h2>Shillong Teer</h2>
+<div class="card-header">
 
-<div class="date" id="shillongDate">
-Loading result...
+<h2>
+🏹 Shillong Teer
+</h2>
+
+<span class="live">
+● LIVE
+</span>
+
 </div>
+
+
+<div
+class="date"
+id="shillongDate">
+
+Loading...
+
+</div>
+
 
 <div class="result-box">
 
 
-<div class="result">
+<div class="result first">
 
-<h3>FIRST ROUND</h3>
-
-<div class="time">
-Result Time: 4:00 PM
-</div>
-
-<div class="number" id="shillongFirst">
---
-</div>
-
-</div>
-
-
-<div class="result">
-
-<h3>SECOND ROUND</h3>
+<h3>
+FIRST ROUND
+</h3>
 
 <div class="time">
-Result Time: 5:00 PM
+4:00 PM
 </div>
 
-<div class="number" id="shillongSecond">
+<div
+class="number"
+id="shillongFirst">
+
 --
-</div>
 
 </div>
 
 </div>
 
-<div class="updated" id="shillongUpdated">
-Waiting for today's result...
+
+<div class="result second">
+
+<h3>
+SECOND ROUND
+</h3>
+
+<div class="time">
+5:00 PM
+</div>
+
+<div
+class="number"
+id="shillongSecond">
+
+--
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div
+class="updated"
+id="shillongUpdated">
+
+Waiting for result...
+
 </div>
 
 </div>
 
 
 
-<!-- KHANAPARA TEER -->
+<!-- KHANAPARA -->
 
 <div class="card">
 
-<h2>Khanapara Teer</h2>
+<div class="card-header">
 
-<div class="date" id="khanaparaDate">
-Loading result...
+<h2>
+🏹 Khanapara Teer
+</h2>
+
+<span class="live">
+● LIVE
+</span>
+
 </div>
+
+
+<div
+class="date"
+id="khanaparaDate">
+
+Loading...
+
+</div>
+
 
 <div class="result-box">
 
 
-<div class="result">
+<div class="result first">
 
-<h3>FIRST ROUND</h3>
-
-<div class="time">
-Result Time: 4:00 PM
-</div>
-
-<div class="number" id="khanaparaFirst">
---
-</div>
-
-</div>
-
-
-<div class="result">
-
-<h3>SECOND ROUND</h3>
+<h3>
+FIRST ROUND
+</h3>
 
 <div class="time">
-Result Time: 5:00 PM
+4:00 PM
 </div>
 
-<div class="number" id="khanaparaSecond">
+<div
+class="number"
+id="khanaparaFirst">
+
 --
-</div>
 
 </div>
 
 </div>
 
-<div class="updated" id="khanaparaUpdated">
-Waiting for today's result...
+
+<div class="result second">
+
+<h3>
+SECOND ROUND
+</h3>
+
+<div class="time">
+5:00 PM
+</div>
+
+<div
+class="number"
+id="khanaparaSecond">
+
+--
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="updated"
+id="khanaparaUpdated">
+
+Waiting for result...
+
 </div>
 
 </div>
@@ -270,6 +512,116 @@ rel="noopener">
 </a>
 
 
+
+<!-- HISTORY -->
+
+<div class="history-title">
+
+<h2>
+📜 Previous Results
+</h2>
+
+<p>
+Previous Shillong & Khanapara Teer results
+</p>
+
+</div>
+
+
+
+<!-- SHILLONG HISTORY -->
+
+<div class="history-card">
+
+<h3>
+🏹 Shillong Teer Previous Results
+</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+
+<th>First Round</th>
+
+<th>Second Round</th>
+
+</tr>
+
+</thead>
+
+<tbody
+id="shillongHistory">
+
+<tr>
+
+<td colspan="3">
+Loading previous results...
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<!-- KHANAPARA HISTORY -->
+
+<div class="history-card">
+
+<h3>
+🏹 Khanapara Teer Previous Results
+</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+
+<th>First Round</th>
+
+<th>Second Round</th>
+
+</tr>
+
+</thead>
+
+<tbody
+id="khanaparaHistory">
+
+<tr>
+
+<td colspan="3">
+Loading previous results...
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
 </div>
 
 
@@ -283,6 +635,7 @@ rel="noopener">
 
 <script type="module">
 
+
 import {
 initializeApp
 }
@@ -293,11 +646,20 @@ from
 import {
 getFirestore,
 doc,
-onSnapshot
+onSnapshot,
+collection,
+query,
+where,
+orderBy,
+limit,
+onSnapshot as historySnapshot
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+
+
+/* FIREBASE */
 
 const firebaseConfig = {
 
@@ -332,36 +694,37 @@ const db =
 getFirestore(app);
 
 
-function getIndiaDate() {
 
-const formatter =
-new Intl.DateTimeFormat(
+/* INDIA DATE */
+
+function getIndiaDate(){
+
+return new Intl.DateTimeFormat(
 "en-CA",
 {
-timeZone: "Asia/Kolkata",
-year: "numeric",
-month: "2-digit",
-day: "2-digit"
+timeZone:"Asia/Kolkata",
+year:"numeric",
+month:"2-digit",
+day:"2-digit"
 }
-);
-
-return formatter.format(new Date());
+).format(new Date());
 
 }
 
 
-const todayDate =
+const today =
 getIndiaDate();
 
 
-function formatDate(dateString) {
 
-if (!dateString) {
-return "";
-}
+/* FORMAT DATE */
+
+function formatDate(date){
+
+if(!date)return "";
 
 const parts =
-dateString.split("-");
+date.split("-");
 
 return (
 parts[2] +
@@ -374,68 +737,49 @@ parts[0]
 }
 
 
-function loadResult(teerType) {
 
-const resultId =
-teerType +
-"_" +
-todayDate;
+/* TODAY RESULT */
 
+function loadToday(teer){
 
-const resultRef =
-doc(
-db,
-"results",
-resultId
-);
+const id =
+teer + "_" + today;
+
+const ref =
+doc(db,"results",id);
 
 
 onSnapshot(
+ref,
+(snapshot)=>{
 
-resultRef,
-
-(snapshot) => {
-
-
-if (!snapshot.exists()) {
+let prefix =
+teer === "shillong"
+? "shillong"
+: "khanapara";
 
 
-if (teerType === "shillong") {
+if(!snapshot.exists()){
 
-document.getElementById("shillongDate")
+document
+.getElementById(prefix+"Date")
 .textContent =
-formatDate(todayDate);
+formatDate(today);
 
-document.getElementById("shillongFirst")
-.textContent = "--";
-
-document.getElementById("shillongSecond")
-.textContent = "--";
-
-document.getElementById("shillongUpdated")
+document
+.getElementById(prefix+"First")
 .textContent =
-"Waiting for today's result...";
+"--";
 
-}
-
-
-if (teerType === "khanapara") {
-
-document.getElementById("khanaparaDate")
+document
+.getElementById(prefix+"Second")
 .textContent =
-formatDate(todayDate);
+"--";
 
-document.getElementById("khanaparaFirst")
-.textContent = "--";
-
-document.getElementById("khanaparaSecond")
-.textContent = "--";
-
-document.getElementById("khanaparaUpdated")
+document
+.getElementById(prefix+"Updated")
 .textContent =
 "Waiting for today's result...";
-
-}
 
 return;
 
@@ -446,68 +790,202 @@ const data =
 snapshot.data();
 
 
-if (teerType === "shillong") {
-
-document.getElementById("shillongDate")
+document
+.getElementById(prefix+"Date")
 .textContent =
 formatDate(data.date);
 
-document.getElementById("shillongFirst")
+
+document
+.getElementById(prefix+"First")
 .textContent =
 data.firstRound || "--";
 
-document.getElementById("shillongSecond")
+
+document
+.getElementById(prefix+"Second")
 .textContent =
 data.secondRound || "--";
 
-document.getElementById("shillongUpdated")
+
+document
+.getElementById(prefix+"Updated")
 .textContent =
 "● Live Result Updated";
+
+},
+(error)=>{
+
+console.error(error);
+
+});
 
 }
 
 
-if (teerType === "khanapara") {
 
-document.getElementById("khanaparaDate")
-.textContent =
-formatDate(data.date);
+/* HISTORY */
 
-document.getElementById("khanaparaFirst")
-.textContent =
-data.firstRound || "--";
+function loadHistory(
+teer,
+elementId
+){
 
-document.getElementById("khanaparaSecond")
-.textContent =
-data.secondRound || "--";
+const historyRef =
+query(
 
-document.getElementById("khanaparaUpdated")
-.textContent =
-"● Live Result Updated";
+collection(db,"results"),
+
+where(
+"teerType",
+"==",
+teer
+),
+
+orderBy(
+"date",
+"desc"
+),
+
+limit(30)
+
+);
+
+
+historySnapshot(
+
+historyRef,
+
+(snapshot)=>{
+
+const tbody =
+document
+.getElementById(elementId);
+
+
+tbody.innerHTML = "";
+
+
+let count = 0;
+
+
+snapshot.forEach(
+(docSnap)=>{
+
+const data =
+docSnap.data();
+
+
+/*
+Do not repeat today's
+result in Previous Results
+*/
+
+if(data.date === today){
+
+return;
+
+}
+
+
+count++;
+
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+${formatDate(data.date)}
+</td>
+
+<td class="fr">
+${data.firstRound || "--"}
+</td>
+
+<td class="sr">
+${data.secondRound || "--"}
+</td>
+
+`;
+
+
+tbody.appendChild(row);
+
+});
+
+
+if(count === 0){
+
+tbody.innerHTML = `
+
+<tr>
+
+<td colspan="3"
+class="empty">
+
+No previous results available.
+
+</td>
+
+</tr>
+
+`;
 
 }
 
 },
-
-(error) => {
+(error)=>{
 
 console.error(
-"Firebase Error:",
+"History error:",
 error
 );
 
+document
+.getElementById(elementId)
+.innerHTML = `
+
+<tr>
+
+<td colspan="3"
+class="empty">
+
+Previous results are loading...
+
+</td>
+
+</tr>
+
+`;
+
+});
+
 }
 
+
+
+/* START */
+
+loadToday("shillong");
+
+loadToday("khanapara");
+
+loadHistory(
+"shillong",
+"shillongHistory"
 );
 
-}
+loadHistory(
+"khanapara",
+"khanaparaHistory"
+);
 
-
-loadResult("shillong");
-
-loadResult("khanapara");
 
 </script>
 
 </body>
+
 </html>
