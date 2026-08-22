@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>Teer Result Today - Shillong & Khanapara Teer</title>
 
   <meta name="description"
-    content="Shillong Teer and Khanapara Teer today's live result with first round and second round timings.">
+        content="Shillong Teer and Khanapara Teer today's live result with first round and second round timings.">
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -99,10 +103,6 @@
       font-weight: bold;
     }
 
-    .no-result {
-      color: #777;
-    }
-
     .whatsapp {
       display: block;
       width: 100%;
@@ -126,128 +126,206 @@
     }
 
     @media(max-width:500px) {
+
       .result-box {
         grid-template-columns: 1fr;
       }
+
+      header h1 {
+        font-size: 25px;
+      }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-  <h1>TEER RESULT TODAY</h1>
-  <p>Shillong Teer & Khanapara Teer Live Result</p>
+
+  <h1>
+    TEER RESULT TODAY
+  </h1>
+
+  <p>
+    Shillong Teer & Khanapara Teer Live Result
+  </p>
+
 </header>
 
 
 <div class="container">
 
-  <!-- SHILLONG -->
+
+  <!-- SHILLONG TEER -->
 
   <div class="card">
 
-    <h2>Shillong Teer</h2>
+    <h2>
+      Shillong Teer
+    </h2>
 
-    <div class="date" id="shillongDate">
+    <div
+      class="date"
+      id="shillongDate">
+
       Loading result...
+
     </div>
+
 
     <div class="result-box">
 
+
+      <!-- FIRST ROUND -->
+
       <div class="result">
 
-        <h3>FIRST ROUND</h3>
+        <h3>
+          FIRST ROUND
+        </h3>
 
         <div class="time">
           Result Time: 4:00 PM
         </div>
 
-        <div class="number" id="shillongFirst">
+        <div
+          class="number"
+          id="shillongFirst">
+
           --
+
         </div>
 
       </div>
 
 
+      <!-- SECOND ROUND -->
+
       <div class="result">
 
-        <h3>SECOND ROUND</h3>
+        <h3>
+          SECOND ROUND
+        </h3>
 
         <div class="time">
           Result Time: 5:00 PM
         </div>
 
-        <div class="number" id="shillongSecond">
+        <div
+          class="number"
+          id="shillongSecond">
+
           --
+
         </div>
 
       </div>
 
     </div>
 
-    <div class="updated" id="shillongUpdated">
+
+    <div
+      class="updated"
+      id="shillongUpdated">
+
       Waiting for today's result...
+
     </div>
 
   </div>
 
 
-  <!-- KHANAPARA -->
+
+  <!-- KHANAPARA TEER -->
 
   <div class="card">
 
-    <h2>Khanapara Teer</h2>
+    <h2>
+      Khanapara Teer
+    </h2>
 
-    <div class="date" id="khanaparaDate">
+    <div
+      class="date"
+      id="khanaparaDate">
+
       Loading result...
+
     </div>
+
 
     <div class="result-box">
 
+
+      <!-- FIRST ROUND -->
+
       <div class="result">
 
-        <h3>FIRST ROUND</h3>
+        <h3>
+          FIRST ROUND
+        </h3>
 
         <div class="time">
           Result Time: 4:00 PM
         </div>
 
-        <div class="number" id="khanaparaFirst">
+        <div
+          class="number"
+          id="khanaparaFirst">
+
           --
+
         </div>
 
       </div>
 
 
+      <!-- SECOND ROUND -->
+
       <div class="result">
 
-        <h3>SECOND ROUND</h3>
+        <h3>
+          SECOND ROUND
+        </h3>
 
         <div class="time">
           Result Time: 5:00 PM
         </div>
 
-        <div class="number" id="khanaparaSecond">
+        <div
+          class="number"
+          id="khanaparaSecond">
+
           --
+
         </div>
 
       </div>
 
     </div>
 
-    <div class="updated" id="khanaparaUpdated">
+
+    <div
+      class="updated"
+      id="khanaparaUpdated">
+
       Waiting for today's result...
+
     </div>
 
   </div>
 
 
-  <!-- WHATSAPP -->
+
+  <!-- WHATSAPP GUTTI -->
 
   <a
     class="whatsapp"
-    href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello%20Gutti"
+    href="https://wa.me/919549541057?text=Hello%20Gutti"
     target="_blank"
     rel="noopener">
 
@@ -255,32 +333,47 @@
 
   </a>
 
+
 </div>
 
 
+
 <footer>
+
   © 2026 Teer Result Today
+
 </footer>
 
 
+
+<!-- FIREBASE -->
+
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
   getFirestore,
   doc,
   onSnapshot
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
 
 
 /* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
+  apiKey:
+    "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
 
   authDomain:
     "teer-result-today.firebaseapp.com",
@@ -303,12 +396,18 @@ const firebaseConfig = {
 };
 
 
-const app = initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+/* INITIALIZE FIREBASE */
+
+const app =
+  initializeApp(firebaseConfig);
+
+const db =
+  getFirestore(app);
 
 
-/* TODAY DATE - INDIA */
+
+/* INDIA DATE */
 
 function getIndiaDate() {
 
@@ -323,17 +422,23 @@ function getIndiaDate() {
       }
     );
 
-  return formatter.format(new Date());
+  return formatter.format(
+    new Date()
+  );
 
 }
 
 
-const todayDate = getIndiaDate();
+const todayDate =
+  getIndiaDate();
+
 
 
 /* FORMAT DATE */
 
-function formatDate(dateString) {
+function formatDate(
+  dateString
+) {
 
   if (!dateString) {
     return "";
@@ -342,127 +447,236 @@ function formatDate(dateString) {
   const parts =
     dateString.split("-");
 
-  return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  return (
+    parts[2] +
+    "-" +
+    parts[1] +
+    "-" +
+    parts[0]
+  );
 
 }
 
 
+
 /* LOAD RESULT */
 
-function loadResult(teerType) {
+function loadResult(
+  teerType
+) {
+
 
   const resultId =
-    teerType + "_" + todayDate;
+    teerType +
+    "_" +
+    todayDate;
+
 
   const resultRef =
-    doc(db, "results", resultId);
+    doc(
+      db,
+      "results",
+      resultId
+    );
 
 
   onSnapshot(
+
     resultRef,
 
     (snapshot) => {
 
+
+      /* NO RESULT */
+
       if (!snapshot.exists()) {
 
-        if (teerType === "shillong") {
 
-          document.getElementById(
-            "shillongDate"
-          ).textContent =
-            formatDate(todayDate);
+        if (
+          teerType ===
+          "shillong"
+        ) {
 
-          document.getElementById(
-            "shillongFirst"
-          ).textContent = "--";
 
-          document.getElementById(
-            "shillongSecond"
-          ).textContent = "--";
+          document
+            .getElementById(
+              "shillongDate"
+            )
+            .textContent =
+            formatDate(
+              todayDate
+            );
 
-          document.getElementById(
-            "shillongUpdated"
-          ).textContent =
+
+          document
+            .getElementById(
+              "shillongFirst"
+            )
+            .textContent =
+            "--";
+
+
+          document
+            .getElementById(
+              "shillongSecond"
+            )
+            .textContent =
+            "--";
+
+
+          document
+            .getElementById(
+              "shillongUpdated"
+            )
+            .textContent =
             "Waiting for today's result...";
 
         }
 
 
-        if (teerType === "khanapara") {
+        if (
+          teerType ===
+          "khanapara"
+        ) {
 
-          document.getElementById(
-            "khanaparaDate"
-          ).textContent =
-            formatDate(todayDate);
 
-          document.getElementById(
-            "khanaparaFirst"
-          ).textContent = "--";
+          document
+            .getElementById(
+              "khanaparaDate"
+            )
+            .textContent =
+            formatDate(
+              todayDate
+            );
 
-          document.getElementById(
-            "khanaparaSecond"
-          ).textContent = "--";
 
-          document.getElementById(
-            "khanaparaUpdated"
-          ).textContent =
+          document
+            .getElementById(
+              "khanaparaFirst"
+            )
+            .textContent =
+            "--";
+
+
+          document
+            .getElementById(
+              "khanaparaSecond"
+            )
+            .textContent =
+            "--";
+
+
+          document
+            .getElementById(
+              "khanaparaUpdated"
+            )
+            .textContent =
             "Waiting for today's result...";
 
         }
+
 
         return;
+
       }
 
+
+
+      /* RESULT EXISTS */
 
       const data =
         snapshot.data();
 
 
-      if (teerType === "shillong") {
 
-        document.getElementById(
-          "shillongDate"
-        ).textContent =
-          formatDate(data.date);
+      /* SHILLONG */
 
-        document.getElementById(
-          "shillongFirst"
-        ).textContent =
-          data.firstRound || "--";
+      if (
+        teerType ===
+        "shillong"
+      ) {
 
-        document.getElementById(
-          "shillongSecond"
-        ).textContent =
-          data.secondRound || "--";
 
-        document.getElementById(
-          "shillongUpdated"
-        ).textContent =
+        document
+          .getElementById(
+            "shillongDate"
+          )
+          .textContent =
+          formatDate(
+            data.date
+          );
+
+
+        document
+          .getElementById(
+            "shillongFirst"
+          )
+          .textContent =
+          data.firstRound ||
+          "--";
+
+
+        document
+          .getElementById(
+            "shillongSecond"
+          )
+          .textContent =
+          data.secondRound ||
+          "--";
+
+
+        document
+          .getElementById(
+            "shillongUpdated"
+          )
+          .textContent =
           "● Live Result Updated";
 
       }
 
 
-      if (teerType === "khanapara") {
 
-        document.getElementById(
-          "khanaparaDate"
-        ).textContent =
-          formatDate(data.date);
+      /* KHANAPARA */
 
-        document.getElementById(
-          "khanaparaFirst"
-        ).textContent =
-          data.firstRound || "--";
+      if (
+        teerType ===
+        "khanapara"
+      ) {
 
-        document.getElementById(
-          "khanaparaSecond"
-        ).textContent =
-          data.secondRound || "--";
 
-        document.getElementById(
-          "khanaparaUpdated"
-        ).textContent =
+        document
+          .getElementById(
+            "khanaparaDate"
+          )
+          .textContent =
+          formatDate(
+            data.date
+          );
+
+
+        document
+          .getElementById(
+            "khanaparaFirst"
+          )
+          .textContent =
+          data.firstRound ||
+          "--";
+
+
+        document
+          .getElementById(
+            "khanaparaSecond"
+          )
+          .textContent =
+          data.secondRound ||
+          "--";
+
+
+        document
+          .getElementById(
+            "khanaparaUpdated"
+          )
+          .textContent =
           "● Live Result Updated";
 
       }
@@ -473,23 +687,31 @@ function loadResult(teerType) {
     (error) => {
 
       console.error(
-        teerType,
+        "Firebase Error:",
         error
       );
 
     }
+
   );
 
 }
 
 
-/* START */
 
-loadResult("shillong");
+/* START LIVE RESULT */
 
-loadResult("khanapara");
+loadResult(
+  "shillong"
+);
+
+loadResult(
+  "khanapara"
+);
+
 
 </script>
+
 
 </body>
 </html>
