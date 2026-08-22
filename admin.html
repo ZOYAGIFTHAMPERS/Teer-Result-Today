@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
   <title>Admin Panel - Teer Result Today</title>
 
+
   <style>
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -14,7 +22,7 @@
 
     .container {
       max-width: 550px;
-      margin: 50px auto;
+      margin: 40px auto;
       padding: 15px;
     }
 
@@ -29,25 +37,37 @@
       text-align: center;
     }
 
-    input, select {
+    input,
+    select {
+
       width: 100%;
       padding: 13px;
       margin: 8px 0 15px;
+
       border: 1px solid #ccc;
       border-radius: 8px;
+
       font-size: 16px;
+
       box-sizing: border-box;
       background: white;
+
     }
 
     button {
+
       width: 100%;
       padding: 13px;
+
       border: 0;
       border-radius: 8px;
+
       font-size: 16px;
+
       margin-top: 8px;
+
       cursor: pointer;
+
     }
 
     #googleLogin {
@@ -84,17 +104,30 @@
       text-align: center;
       margin-bottom: 20px;
     }
+
+    .access-denied {
+      color: #dc2626;
+      font-weight: bold;
+      text-align: center;
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
+
   <div class="card">
 
     <h1>Admin Panel</h1>
 
+
     <!-- LOGIN -->
+
     <div id="loginSection">
 
       <p style="text-align:center;">
@@ -105,60 +138,92 @@
         Login with Google
       </button>
 
-      <div class="status" id="loginStatus"></div>
+      <div
+        class="status"
+        id="loginStatus">
+      </div>
 
     </div>
 
 
-    <!-- ADMIN PANEL -->
-    <div id="adminSection" class="hidden">
+    <!-- ADMIN -->
+
+    <div
+      id="adminSection"
+      class="hidden">
+
 
       <div class="user">
+
         Logged in as:
+
         <strong id="userEmail"></strong>
+
       </div>
 
 
-      <!-- TEER TYPE -->
-      <label>Teer Type</label>
+      <!-- TEER -->
+
+      <label>
+        Teer Type
+      </label>
 
       <select id="teerType">
-        <option value="">Select Teer</option>
-        <option value="shillong">Shillong Teer</option>
-        <option value="khanapara">Khanapara Teer</option>
+
+        <option value="">
+          Select Teer
+        </option>
+
+        <option value="shillong">
+          Shillong Teer
+        </option>
+
+        <option value="khanapara">
+          Khanapara Teer
+        </option>
+
       </select>
 
 
       <!-- DATE -->
-      <label>Date</label>
 
-      <input type="date" id="resultDate">
+      <label>
+        Result Date
+      </label>
+
+      <input
+        type="date"
+        id="resultDate">
 
 
-      <!-- FIRST ROUND -->
-      <label>First Round (FR)</label>
+      <!-- FIRST -->
+
+      <label>
+        First Round
+      </label>
 
       <input
         type="text"
         id="firstRound"
-        placeholder="Enter First Round"
-        maxlength="3"
-      >
+        placeholder="Enter FR"
+        maxlength="3">
 
 
-      <!-- SECOND ROUND -->
-      <label>Second Round (SR)</label>
+      <!-- SECOND -->
+
+      <label>
+        Second Round
+      </label>
 
       <input
         type="text"
         id="secondRound"
-        placeholder="Enter Second Round"
-        maxlength="3"
-      >
+        placeholder="Enter SR"
+        maxlength="3">
 
 
       <button id="saveResult">
-        Save Result
+        Save / Update Result
       </button>
 
 
@@ -167,18 +232,27 @@
       </button>
 
 
-      <div class="status" id="saveStatus"></div>
+      <div
+        class="status"
+        id="saveStatus">
+      </div>
 
     </div>
 
   </div>
+
 </div>
 
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
   getAuth,
@@ -187,181 +261,426 @@ import {
   onAuthStateChanged,
   signOut
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
   getFirestore,
   doc,
-  setDoc
+  setDoc,
+  getDoc
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+/* FIREBASE */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
-  authDomain: "teer-result-today.firebaseapp.com",
-  projectId: "teer-result-today",
-  storageBucket: "teer-result-today.firebasestorage.app",
-  messagingSenderId: "903009219263",
-  appId: "1:903009219263:web:b10f24ed08ad2cc3904c0a",
-  measurementId: "G-NL95SM0CJM"
+
+  apiKey:
+    "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
+
+  authDomain:
+    "teer-result-today.firebaseapp.com",
+
+  projectId:
+    "teer-result-today",
+
+  storageBucket:
+    "teer-result-today.firebasestorage.app",
+
+  messagingSenderId:
+    "903009219263",
+
+  appId:
+    "1:903009219263:web:b10f24ed08ad2cc3904c0a",
+
+  measurementId:
+    "G-NL95SM0CJM"
+
 };
 
 
-/* INITIALIZE FIREBASE */
+const app =
+  initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth =
+  getAuth(app);
 
-const db = getFirestore(app);
 
-const provider = new GoogleAuthProvider();
+const db =
+  getFirestore(app);
+
+
+const provider =
+  new GoogleAuthProvider();
+
+
+/* ONLY THIS GMAIL */
+
+const ADMIN_EMAIL =
+  "rbdpublicationcompany@gmail.com";
 
 
 /* GOOGLE LOGIN */
 
-document.getElementById("googleLogin").onclick = async () => {
+document
+  .getElementById("googleLogin")
+  .onclick = async () => {
 
-  try {
+    try {
 
-    await signInWithPopup(auth, provider);
+      await signInWithPopup(
+        auth,
+        provider
+      );
 
-  } catch (error) {
+    }
 
-    document.getElementById("loginStatus").textContent =
-      "Login failed: " + error.message;
+    catch (error) {
 
-  }
+      document
+        .getElementById("loginStatus")
+        .textContent =
+        "Login failed: " +
+        error.message;
 
-};
+    }
+
+  };
 
 
-/* AUTH STATE */
+/* AUTH */
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(
+  auth,
+  async (user) => {
 
-  if (user) {
+    if (!user) {
 
-    document.getElementById("loginSection")
+      document
+        .getElementById("loginSection")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("adminSection")
+        .classList.add("hidden");
+
+      return;
+    }
+
+
+    /* CHECK EMAIL */
+
+    if (
+      user.email.toLowerCase() !==
+      ADMIN_EMAIL.toLowerCase()
+    ) {
+
+      document
+        .getElementById("loginSection")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("adminSection")
+        .classList.add("hidden");
+
+      document
+        .getElementById("loginStatus")
+        .innerHTML =
+        "<span class='access-denied'>" +
+        "Access Denied. This Gmail is not authorized." +
+        "</span>";
+
+      await signOut(auth);
+
+      return;
+
+    }
+
+
+    /* ADMIN */
+
+    document
+      .getElementById("loginSection")
       .classList.add("hidden");
 
-    document.getElementById("adminSection")
+    document
+      .getElementById("adminSection")
       .classList.remove("hidden");
 
-    document.getElementById("userEmail").textContent =
+    document
+      .getElementById("userEmail")
+      .textContent =
       user.email;
 
-  } else {
-
-    document.getElementById("loginSection")
-      .classList.remove("hidden");
-
-    document.getElementById("adminSection")
-      .classList.add("hidden");
-
-  }
-
-});
+  });
 
 
-/* SAVE RESULT */
+/* LOAD OLD RESULT */
 
-document.getElementById("saveResult").onclick = async () => {
+async function loadExistingResult() {
 
   const teerType =
-    document.getElementById("teerType").value;
+    document
+      .getElementById("teerType")
+      .value;
 
   const date =
-    document.getElementById("resultDate").value;
-
-  const firstRound =
-    document.getElementById("firstRound").value.trim();
-
-  const secondRound =
-    document.getElementById("secondRound").value.trim();
+    document
+      .getElementById("resultDate")
+      .value;
 
 
-  /* VALIDATION */
-
-  if (!teerType || !date || !firstRound || !secondRound) {
-
-    document.getElementById("saveStatus").textContent =
-      "Please fill all fields.";
-
-    return;
-  }
-
-
-  /* ALLOW NUMBERS ONLY */
-
-  if (!/^\d+$/.test(firstRound) ||
-      !/^\d+$/.test(secondRound)) {
-
-    document.getElementById("saveStatus").textContent =
-      "FR and SR must contain numbers only.";
-
+  if (!teerType || !date) {
     return;
   }
 
 
   try {
-
-    /*
-      Each Teer + Date gets its own document.
-
-      Example:
-
-      results/shillong_2026-08-22
-
-      results/khanapara_2026-08-22
-    */
 
     const resultId =
       teerType + "_" + date;
 
 
-    await setDoc(
-      doc(db, "results", resultId),
-      {
-        teerType: teerType,
-        date: date,
-        firstRound: firstRound,
-        secondRound: secondRound,
-        updatedAt: new Date().toISOString()
-      }
-    );
+    const resultRef =
+      doc(
+        db,
+        "results",
+        resultId
+      );
 
 
-    document.getElementById("saveStatus").textContent =
-      "Result saved successfully!";
+    const snapshot =
+      await getDoc(resultRef);
 
 
-    /* CLEAR ROUND FIELDS */
+    if (snapshot.exists()) {
 
-    document.getElementById("firstRound").value = "";
-    document.getElementById("secondRound").value = "";
+      const data =
+        snapshot.data();
 
 
-  } catch (error) {
+      document
+        .getElementById("firstRound")
+        .value =
+        data.firstRound || "";
 
-    document.getElementById("saveStatus").textContent =
-      "Save failed: " + error.message;
+
+      document
+        .getElementById("secondRound")
+        .value =
+        data.secondRound || "";
+
+
+      document
+        .getElementById("saveStatus")
+        .textContent =
+        "Existing result loaded. You can edit it.";
+
+    }
+
+    else {
+
+      document
+        .getElementById("firstRound")
+        .value = "";
+
+      document
+        .getElementById("secondRound")
+        .value = "";
+
+      document
+        .getElementById("saveStatus")
+        .textContent =
+        "No result for this date. You can add a new result.";
+
+    }
 
   }
 
-};
+  catch (error) {
+
+    document
+      .getElementById("saveStatus")
+      .textContent =
+      "Unable to load result.";
+
+  }
+
+}
+
+
+/* WHEN TEER CHANGES */
+
+document
+  .getElementById("teerType")
+  .addEventListener(
+    "change",
+    loadExistingResult
+  );
+
+
+/* WHEN DATE CHANGES */
+
+document
+  .getElementById("resultDate")
+  .addEventListener(
+    "change",
+    loadExistingResult
+  );
+
+
+/* SAVE */
+
+document
+  .getElementById("saveResult")
+  .onclick =
+  async () => {
+
+
+    const teerType =
+      document
+        .getElementById("teerType")
+        .value;
+
+
+    const date =
+      document
+        .getElementById("resultDate")
+        .value;
+
+
+    const firstRound =
+      document
+        .getElementById("firstRound")
+        .value
+        .trim();
+
+
+    const secondRound =
+      document
+        .getElementById("secondRound")
+        .value
+        .trim();
+
+
+    /* VALIDATION */
+
+    if (
+      !teerType ||
+      !date ||
+      !firstRound ||
+      !secondRound
+    ) {
+
+      document
+        .getElementById("saveStatus")
+        .textContent =
+        "Please fill all fields.";
+
+      return;
+
+    }
+
+
+    /* NUMBERS ONLY */
+
+    if (
+      !/^\d+$/.test(firstRound) ||
+      !/^\d+$/.test(secondRound)
+    ) {
+
+      document
+        .getElementById("saveStatus")
+        .textContent =
+        "FR and SR must contain numbers only.";
+
+      return;
+
+    }
+
+
+    try {
+
+
+      const resultId =
+        teerType + "_" + date;
+
+
+      await setDoc(
+
+        doc(
+          db,
+          "results",
+          resultId
+        ),
+
+        {
+
+          teerType:
+            teerType,
+
+          date:
+            date,
+
+          firstRound:
+            firstRound,
+
+          secondRound:
+            secondRound,
+
+          firstRoundTime:
+            "4:00 PM",
+
+          secondRoundTime:
+            "5:00 PM",
+
+          updatedAt:
+            new Date().toISOString(),
+
+          updatedBy:
+            ADMIN_EMAIL
+
+        }
+
+      );
+
+
+      document
+        .getElementById("saveStatus")
+        .textContent =
+        "Result saved / updated successfully!";
+
+
+    }
+
+    catch (error) {
+
+      document
+        .getElementById("saveStatus")
+        .textContent =
+        "Save failed: " +
+        error.message;
+
+    }
+
+  };
 
 
 /* LOGOUT */
 
-document.getElementById("logout").onclick = async () => {
+document
+  .getElementById("logout")
+  .onclick =
+  async () => {
 
-  await signOut(auth);
+    await signOut(auth);
 
-};
+  };
 
 </script>
 
