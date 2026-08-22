@@ -1,1550 +1,767 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<head>
   <meta name="google-site-verification" content="s8WFeEY0jP5NvQMWcojq7IydEkwgHJhQM8pg4_Zxt3M" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Teer Result Today | Shillong Teer & Khanapara Teer</title>
-
-<meta name="description"
-content="Teer Result Today - Shillong Teer and Khanapara Teer live results, FR and SR results, timings and complete previous result chart.">
-
-<style>
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:#172033;
-  background:
-    radial-gradient(circle at top left,#dbeafe 0,#f8fafc 35%,#fff7ed 70%,#ecfdf5 100%);
-}
-
-/* HEADER */
-
-header{
-  background:
-    linear-gradient(135deg,#312e81,#4f46e5,#7c3aed,#db2777);
-  color:white;
-  text-align:center;
-  padding:34px 15px 30px;
-  box-shadow:0 6px 25px rgba(49,46,129,.25);
-}
-
-.logo{
-  width:78px;
-  height:78px;
-  margin:0 auto 12px;
-  border-radius:50%;
-  background:rgba(255,255,255,.18);
-  border:2px solid rgba(255,255,255,.65);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:43px;
-}
-
-header h1{
-  margin:0;
-  font-size:34px;
-  letter-spacing:.5px;
-}
-
-header p{
-  margin:9px 0 0;
-  font-size:15px;
-  opacity:.94;
-}
-
-/* TICKER */
-
-.ticker{
-  background:#111827;
-  color:#fff;
-  overflow:hidden;
-  white-space:nowrap;
-  padding:11px 0;
-  font-size:14px;
-  font-weight:bold;
-}
-
-.ticker-track{
-  display:inline-block;
-  padding-left:100%;
-  animation:scrollText 25s linear infinite;
-}
-
-@keyframes scrollText{
-  0%{
-    transform:translateX(0);
-  }
-  100%{
-    transform:translateX(-100%);
-  }
-}
-
-/* CONTAINER */
-
-.container{
-  width:100%;
-  max-width:1000px;
-  margin:0 auto;
-  padding:22px 15px 40px;
-}
-
-/* HERO */
-
-.hero{
-  background:rgba(255,255,255,.9);
-  border-radius:24px;
-  padding:25px;
-  margin-bottom:25px;
-  box-shadow:0 8px 28px rgba(15,23,42,.10);
-  border:1px solid rgba(255,255,255,.9);
-}
-
-.hero h2{
-  margin:0 0 10px;
-  color:#312e81;
-  font-size:27px;
-}
-
-.hero p{
-  line-height:1.7;
-  color:#475569;
-  margin:8px 0;
-}
-
-/* ORIGINAL VISUALS */
-
-.visual-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin:22px 0 28px;
-}
-
-.visual{
-  min-height:165px;
-  border-radius:20px;
-  padding:18px;
-  color:white;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 8px 22px rgba(15,23,42,.12);
-}
-
-.visual:nth-child(1){
-  background:linear-gradient(135deg,#2563eb,#06b6d4);
-}
-
-.visual:nth-child(2){
-  background:linear-gradient(135deg,#7c3aed,#db2777);
-}
-
-.visual:nth-child(3){
-  background:linear-gradient(135deg,#ea580c,#f59e0b);
-}
-
-.visual:nth-child(4){
-  background:linear-gradient(135deg,#059669,#14b8a6);
-}
-
-.visual:nth-child(5){
-  background:linear-gradient(135deg,#4338ca,#8b5cf6);
-}
-
-.visual-icon{
-  font-size:46px;
-  margin-bottom:10px;
-}
-
-.visual h3{
-  margin:0 0 5px;
-  font-size:17px;
-}
-
-.visual p{
-  color:white;
-  opacity:.9;
-  font-size:12px;
-  line-height:1.45;
-  margin:0;
-}
-
-.visual-decoration{
-  position:absolute;
-  right:-18px;
-  bottom:-25px;
-  font-size:90px;
-  opacity:.12;
-}
-
-/* SECTION TITLE */
-
-.section-title{
-  text-align:center;
-  margin:10px 0 20px;
-}
-
-.section-title h2{
-  margin:0;
-  color:#312e81;
-  font-size:27px;
-}
-
-.section-title p{
-  color:#64748b;
-  margin:7px 0;
-}
-
-/* RESULT CARD */
-
-.card{
-  background:rgba(255,255,255,.97);
-  border-radius:22px;
-  padding:23px;
-  margin-bottom:22px;
-  box-shadow:0 8px 28px rgba(15,23,42,.10);
-  border:1px solid rgba(255,255,255,.8);
-}
-
-.card-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:8px;
-}
-
-.card-header h2{
-  margin:0;
-  font-size:23px;
-}
-
-.live{
-  background:#dcfce7;
-  color:#15803d;
-  padding:7px 11px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:bold;
-  box-shadow:0 0 0 4px #f0fdf4;
-}
-
-.date{
-  color:#64748b;
-  font-weight:bold;
-  margin-bottom:18px;
-}
-
-/* RESULT BOX */
-
-.result-box{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.result{
-  padding:22px 12px;
-  border-radius:18px;
-  text-align:center;
-  color:white;
-}
-
-.first{
-  background:linear-gradient(135deg,#2563eb,#06b6d4);
-}
-
-.second{
-  background:linear-gradient(135deg,#f97316,#db2777);
-}
-
-.result h3{
-  margin:0 0 7px;
-  font-size:16px;
-}
-
-.time{
-  font-size:13px;
-  opacity:.9;
-  margin-bottom:8px;
-}
-
-.number{
-  font-size:45px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
-.updated{
-  text-align:center;
-  margin-top:15px;
-  color:#16a34a;
-  font-size:13px;
-  font-weight:bold;
-}
-
-/* WHATSAPP */
-
-.whatsapp{
-  display:block;
-  text-decoration:none;
-  text-align:center;
-  background:linear-gradient(135deg,#16a34a,#22c55e);
-  color:white;
-  padding:16px;
-  border-radius:15px;
-  font-size:17px;
-  font-weight:bold;
-  margin:10px 0 30px;
-  box-shadow:0 7px 20px rgba(22,163,74,.23);
-}
-
-.whatsapp:hover{
-  transform:translateY(-1px);
-}
-
-/* DESCRIPTION */
-
-.info-card{
-  background:white;
-  border-radius:20px;
-  padding:22px;
-  margin:25px 0;
-  box-shadow:0 7px 22px rgba(15,23,42,.08);
-}
-
-.info-card h2{
-  color:#312e81;
-  margin-top:0;
-}
-
-.info-card p{
-  color:#475569;
-  line-height:1.75;
-}
-
-/* HISTORY */
-
-.history-title{
-  text-align:center;
-  margin:38px 0 20px;
-}
-
-.history-title h2{
-  margin:0;
-  color:#312e81;
-}
-
-.history-title p{
-  color:#64748b;
-}
-
-/* SEARCH */
-
-.search-box{
-  background:white;
-  padding:18px;
-  border-radius:18px;
-  margin-bottom:20px;
-  box-shadow:0 6px 20px rgba(15,23,42,.08);
-}
-
-.search-box label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:8px;
-  color:#312e81;
-}
-
-.search-controls{
-  display:flex;
-  gap:10px;
-}
-
-.search-controls input{
-  flex:1;
-  padding:13px;
-  border:1px solid #cbd5e1;
-  border-radius:10px;
-  font-size:15px;
-}
-
-.search-controls button{
-  padding:13px 18px;
-  border:0;
-  border-radius:10px;
-  background:#4f46e5;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* HISTORY CARD */
-
-.history-card{
-  background:white;
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:22px;
-  box-shadow:0 7px 22px rgba(15,23,42,.08);
-}
-
-.history-card h3{
-  margin:0 0 15px;
-  color:#4338ca;
-}
-
-/* TABLE */
-
-.table-wrap{
-  overflow-x:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:650px;
-}
-
-th{
-  background:linear-gradient(135deg,#4f46e5,#7c3aed);
-  color:white;
-  padding:12px 8px;
-  font-size:13px;
-}
-
-td{
-  padding:11px 8px;
-  text-align:center;
-  border-bottom:1px solid #e5e7eb;
-  font-size:14px;
-}
-
-tr:nth-child(even){
-  background:#f8fafc;
-}
-
-.fr{
-  color:#2563eb;
-  font-weight:bold;
-  font-size:17px;
-}
-
-.sr{
-  color:#db2777;
-  font-weight:bold;
-  font-size:17px;
-}
-
-.result-time{
-  color:#64748b;
-  font-size:12px;
-}
-
-/* EMPTY */
-
-.empty{
-  text-align:center;
-  padding:20px;
-  color:#64748b;
-}
-
-/* FOOTER */
-
-footer{
-  background:#111827;
-  color:#cbd5e1;
-  text-align:center;
-  padding:28px 15px;
-  font-size:13px;
-}
-
-footer strong{
-  color:white;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-  header h1{
-    font-size:26px;
-  }
-
-  .visual-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .result-box{
-    grid-template-columns:1fr;
-  }
-
-  .card{
-    padding:17px;
-  }
-
-  .number{
-    font-size:41px;
-  }
-
-  .search-controls{
-    flex-direction:column;
-  }
-
-}
-
-@media(max-width:450px){
-
-  .visual-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    padding:19px;
-  }
-
-}
-
-</style>
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Teer Result Today | Shillong Teer & Khanapara Teer</title>
+
+  <meta name="description" content="Teer Result Today - Shillong Teer and Khanapara Teer live results, FR and SR results, timings and previous result chart.">
+
+  <style>
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:#172033;
+      background:linear-gradient(135deg,#eef2ff,#ffffff,#fff7ed,#ecfdf5);
+    }
+
+    header{
+      background:linear-gradient(135deg,#312e81,#4f46e5,#7c3aed,#db2777);
+      color:white;
+      text-align:center;
+      padding:34px 15px 30px;
+      box-shadow:0 6px 25px rgba(49,46,129,.25);
+    }
+
+    .logo{
+      width:78px;
+      height:78px;
+      margin:0 auto 12px;
+      border-radius:50%;
+      background:rgba(255,255,255,.18);
+      border:2px solid rgba(255,255,255,.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:43px;
+    }
+
+    header h1{
+      margin:0;
+      font-size:34px;
+    }
+
+    header p{
+      margin:9px 0 0;
+      font-size:15px;
+    }
+
+    .ticker{
+      background:#111827;
+      color:white;
+      overflow:hidden;
+      white-space:nowrap;
+      padding:11px 0;
+      font-size:14px;
+      font-weight:bold;
+    }
+
+    .ticker-track{
+      display:inline-block;
+      padding-left:100%;
+      animation:scrollText 25s linear infinite;
+    }
+
+    @keyframes scrollText{
+      from{transform:translateX(0)}
+      to{transform:translateX(-100%)}
+    }
+
+    .container{
+      width:100%;
+      max-width:1000px;
+      margin:auto;
+      padding:22px 15px 40px;
+    }
+
+    .hero,.card,.info-card,.history-card,.search-box{
+      background:white;
+      border-radius:22px;
+      padding:22px;
+      margin-bottom:22px;
+      box-shadow:0 8px 28px rgba(15,23,42,.10);
+    }
+
+    .hero h2,.section-title h2,.info-card h2,.history-title h2{
+      color:#312e81;
+    }
+
+    .hero p,.info-card p{
+      color:#475569;
+      line-height:1.7;
+    }
+
+    .visual-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
+      margin:22px 0 28px;
+    }
+
+    .visual{
+      min-height:165px;
+      border-radius:20px;
+      padding:18px;
+      color:white;
+      box-shadow:0 8px 22px rgba(15,23,42,.12);
+    }
+
+    .visual:nth-child(1){background:linear-gradient(135deg,#2563eb,#06b6d4)}
+    .visual:nth-child(2){background:linear-gradient(135deg,#7c3aed,#db2777)}
+    .visual:nth-child(3){background:linear-gradient(135deg,#ea580c,#f59e0b)}
+    .visual:nth-child(4){background:linear-gradient(135deg,#059669,#14b8a6)}
+    .visual:nth-child(5){background:linear-gradient(135deg,#4338ca,#8b5cf6)}
+
+    .visual-icon{
+      font-size:43px;
+      margin-bottom:10px;
+    }
+
+    .visual h3{
+      margin:0 0 7px;
+    }
+
+    .visual p{
+      color:white;
+      font-size:13px;
+      line-height:1.5;
+      margin:0;
+    }
+
+    .section-title,.history-title{
+      text-align:center;
+      margin:30px 0 20px;
+    }
+
+    .section-title h2,.history-title h2{
+      margin:0;
+    }
+
+    .section-title p,.history-title p{
+      color:#64748b;
+    }
+
+    .card-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+    }
+
+    .card-header h2{
+      margin:0;
+      font-size:23px;
+    }
+
+    .live{
+      background:#dcfce7;
+      color:#15803d;
+      padding:7px 11px;
+      border-radius:30px;
+      font-size:12px;
+      font-weight:bold;
+    }
+
+    .date{
+      color:#64748b;
+      font-weight:bold;
+      margin:12px 0 18px;
+    }
+
+    .result-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .result{
+      padding:22px 12px;
+      border-radius:18px;
+      text-align:center;
+      color:white;
+    }
+
+    .first{background:linear-gradient(135deg,#2563eb,#06b6d4)}
+    .second{background:linear-gradient(135deg,#f97316,#db2777)}
+
+    .result h3{
+      margin:0 0 7px;
+    }
+
+    .time{
+      font-size:13px;
+      margin-bottom:8px;
+    }
+
+    .number{
+      font-size:45px;
+      font-weight:900;
+    }
+
+    .updated{
+      text-align:center;
+      margin-top:15px;
+      color:#16a34a;
+      font-size:13px;
+      font-weight:bold;
+    }
+
+    .whatsapp{
+      display:block;
+      text-decoration:none;
+      text-align:center;
+      background:linear-gradient(135deg,#16a34a,#22c55e);
+      color:white;
+      padding:16px;
+      border-radius:15px;
+      font-size:17px;
+      font-weight:bold;
+      margin:10px 0 30px;
+    }
+
+    .search-box label{
+      display:block;
+      font-weight:bold;
+      color:#312e81;
+      margin-bottom:8px;
+    }
+
+    .search-controls{
+      display:flex;
+      gap:10px;
+    }
+
+    .search-controls input{
+      flex:1;
+      padding:13px;
+      border:1px solid #cbd5e1;
+      border-radius:10px;
+      font-size:15px;
+    }
+
+    .search-controls button{
+      padding:13px 18px;
+      border:0;
+      border-radius:10px;
+      background:#4f46e5;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:600px;
+    }
+
+    th{
+      background:linear-gradient(135deg,#4f46e5,#7c3aed);
+      color:white;
+      padding:12px 8px;
+    }
+
+    td{
+      padding:11px 8px;
+      text-align:center;
+      border-bottom:1px solid #e5e7eb;
+    }
+
+    tr:nth-child(even){
+      background:#f8fafc;
+    }
+
+    .fr{
+      color:#2563eb;
+      font-weight:bold;
+      font-size:17px;
+    }
+
+    .sr{
+      color:#db2777;
+      font-weight:bold;
+      font-size:17px;
+    }
+
+    .result-time{
+      color:#64748b;
+      font-size:12px;
+    }
+
+    .empty{
+      text-align:center;
+      padding:20px;
+      color:#64748b;
+    }
+
+    footer{
+      background:#111827;
+      color:#cbd5e1;
+      text-align:center;
+      padding:28px 15px;
+      font-size:13px;
+    }
+
+    footer strong{color:white}
+
+    @media(max-width:700px){
+      header h1{font-size:27px}
+      .visual-grid{grid-template-columns:1fr 1fr}
+      .result-box{grid-template-columns:1fr}
+      .search-controls{flex-direction:column}
+    }
+
+    @media(max-width:450px){
+      .visual-grid{grid-template-columns:1fr}
+      .hero,.card,.info-card,.history-card,.search-box{padding:18px}
+    }
+  </style>
 </head>
 
 <body>
 
-
-<!-- HEADER -->
-
 <header>
-
-<div class="logo">
-🏹
-</div>
-
-<h1>
-TEER RESULT TODAY
-</h1>
-
-<p>
-Shillong Teer & Khanapara Teer Live Results
-</p>
-
+  <div class="logo">🏹</div>
+  <h1>TEER RESULT TODAY</h1>
+  <p>Shillong Teer & Khanapara Teer Live Results</p>
 </header>
 
-
-<!-- SCROLLING INFORMATION -->
-
 <div class="ticker">
-
-<div class="ticker-track">
-
-🔴 LIVE UPDATE &nbsp; • &nbsp;
-Shillong Teer FR 4:00 PM &nbsp; • &nbsp;
-Shillong Teer SR 5:00 PM &nbsp; • &nbsp;
-Khanapara Teer FR 4:00 PM &nbsp; • &nbsp;
-Khanapara Teer SR 5:00 PM &nbsp; • &nbsp;
-Previous Results Chart Available
-
+  <div class="ticker-track">
+    🔴 LIVE UPDATE • Shillong Teer FR 4:00 PM • Shillong Teer SR 5:00 PM • Khanapara Teer FR 4:00 PM • Khanapara Teer SR 5:00 PM • Previous Results Chart Available
+  </div>
 </div>
-
-</div>
-
 
 <div class="container">
 
+  <div class="hero">
+    <h2>🏹 Teer Result Today</h2>
+    <p>Welcome to Teer Result Today. This website provides a simple and easy-to-read place for checking Shillong Teer and Khanapara Teer results.</p>
+    <p>First Round and Second Round results are displayed separately with their scheduled result times. Results shown on this website are updated through the administration panel.</p>
+  </div>
 
-<!-- INTRO -->
+  <div class="visual-grid">
 
-<div class="hero">
+    <div class="visual">
+      <div class="visual-icon">🏹</div>
+      <h3>Shillong Teer</h3>
+      <p>Shillong Teer result information and previous result records.</p>
+    </div>
 
-<h2>
-🏹 Teer Result Today
-</h2>
+    <div class="visual">
+      <div class="visual-icon">🎯</div>
+      <h3>Khanapara Teer</h3>
+      <p>Khanapara Teer result information in an easy format.</p>
+    </div>
 
-<p>
-Welcome to Teer Result Today. This website provides a simple
-and easy-to-read place for checking Shillong Teer and Khanapara
-Teer results.
-</p>
+    <div class="visual">
+      <div class="visual-icon">🔴</div>
+      <h3>Live Result</h3>
+      <p>Today's result section is connected with the live database.</p>
+    </div>
 
-<p>
-First Round and Second Round results are displayed separately
-with their scheduled result times. Results shown on this website
-are updated through the administration panel.
-</p>
+    <div class="visual">
+      <div class="visual-icon">📊</div>
+      <h3>Previous Chart</h3>
+      <p>Saved results are arranged according to their dates.</p>
+    </div>
+
+    <div class="visual">
+      <div class="visual-icon">🗓️</div>
+      <h3>Result History</h3>
+      <p>Older saved results remain available in the public chart.</p>
+    </div>
+
+  </div>
+
+  <div class="section-title">
+    <h2>Today's Result</h2>
+    <p>Live result updated from Admin Panel</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>🏹 Shillong Teer</h2>
+      <span class="live">● LIVE</span>
+    </div>
+
+    <div class="date" id="shillongDate">Loading...</div>
+
+    <div class="result-box">
+      <div class="result first">
+        <h3>FIRST ROUND</h3>
+        <div class="time">⏰ 4:00 PM</div>
+        <div class="number" id="shillongFirst">--</div>
+      </div>
+
+      <div class="result second">
+        <h3>SECOND ROUND</h3>
+        <div class="time">⏰ 5:00 PM</div>
+        <div class="number" id="shillongSecond">--</div>
+      </div>
+    </div>
+
+    <div class="updated" id="shillongUpdated">Waiting for today's result...</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>🏹 Khanapara Teer</h2>
+      <span class="live">● LIVE</span>
+    </div>
+
+    <div class="date" id="khanaparaDate">Loading...</div>
+
+    <div class="result-box">
+      <div class="result first">
+        <h3>FIRST ROUND</h3>
+        <div class="time">⏰ 4:00 PM</div>
+        <div class="number" id="khanaparaFirst">--</div>
+      </div>
+
+      <div class="result second">
+        <h3>SECOND ROUND</h3>
+        <div class="time">⏰ 5:00 PM</div>
+        <div class="number" id="khanaparaSecond">--</div>
+      </div>
+    </div>
+
+    <div class="updated" id="khanaparaUpdated">Waiting for today's result...</div>
+  </div>
+
+  <a class="whatsapp"
+     href="https://api.whatsapp.com/send?phone=919549541057&text=Hello%20Gutti"
+     target="_blank"
+     rel="noopener">
+    💬 WhatsApp Gutti
+  </a>
+
+  <div class="info-card">
+    <h2>🏹 About Teer Results</h2>
+
+    <p>Teer is a traditional archery-based game associated with Meghalaya and the surrounding region. Shillong Teer and Khanapara Teer are commonly followed for their scheduled round results.</p>
+
+    <p>Teer Result Today presents First Round and Second Round information in a clear format. The website does not generate or predict result numbers. Results displayed here are entered through the site's administration panel.</p>
+  </div>
+
+  <div class="history-title">
+    <h2>📜 Previous Results Chart</h2>
+    <p>Complete saved result history</p>
+  </div>
+
+  <div class="search-box">
+    <label>🔎 Search Previous Result by Date</label>
+
+    <div class="search-controls">
+      <input type="date" id="dateSearch">
+      <button id="clearSearch">Show All</button>
+    </div>
+  </div>
+
+  <div class="history-card">
+    <h3>🏹 Shillong Teer Previous Chart</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>FR</th>
+            <th>FR Time</th>
+            <th>SR</th>
+            <th>SR Time</th>
+          </tr>
+        </thead>
+
+        <tbody id="shillongHistory">
+          <tr>
+            <td colspan="5">Loading previous results...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="history-card">
+    <h3>🏹 Khanapara Teer Previous Chart</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>FR</th>
+            <th>FR Time</th>
+            <th>SR</th>
+            <th>SR Time</th>
+          </tr>
+        </thead>
+
+        <tbody id="khanaparaHistory">
+          <tr>
+            <td colspan="5">Loading previous results...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 </div>
-
-
-<!-- ORIGINAL TEER VISUALS -->
-
-<div class="visual-grid">
-
-<div class="visual">
-
-<div class="visual-icon">
-🏹
-</div>
-
-<h3>
-Shillong Teer
-</h3>
-
-<p>
-Shillong Teer result information and previous result records.
-</p>
-
-<div class="visual-decoration">
-🏹
-</div>
-
-</div>
-
-
-<div class="visual">
-
-<div class="visual-icon">
-🎯
-</div>
-
-<h3>
-Khanapara Teer
-</h3>
-
-<p>
-Khanapara Teer result information in an easy format.
-</p>
-
-<div class="visual-decoration">
-🎯
-</div>
-
-</div>
-
-
-<div class="visual">
-
-<div class="visual-icon">
-🔴
-</div>
-
-<h3>
-Live Result
-</h3>
-
-<p>
-Today's result section is connected with the live database.
-</p>
-
-<div class="visual-decoration">
-🔴
-</div>
-
-</div>
-
-
-<div class="visual">
-
-<div class="visual-icon">
-📊
-</div>
-
-<h3>
-Previous Chart
-</h3>
-
-<p>
-Saved results are arranged according to their dates.
-</p>
-
-<div class="visual-decoration">
-📊
-</div>
-
-</div>
-
-
-<div class="visual">
-
-<div class="visual-icon">
-🗓️
-</div>
-
-<h3>
-Result History
-</h3>
-
-<p>
-Older saved results remain available in the public chart.
-</p>
-
-<div class="visual-decoration">
-🗓️
-</div>
-
-</div>
-
-</div>
-
-
-<!-- TODAY -->
-
-<div class="section-title">
-
-<h2>
-Today's Result
-</h2>
-
-<p>
-Live result updated from Admin Panel
-</p>
-
-</div>
-
-
-<!-- SHILLONG -->
-
-<div class="card">
-
-<div class="card-header">
-
-<h2>
-🏹 Shillong Teer
-</h2>
-
-<span class="live">
-● LIVE
-</span>
-
-</div>
-
-<div
-class="date"
-id="shillongDate">
-
-Loading...
-
-</div>
-
-
-<div class="result-box">
-
-
-<div class="result first">
-
-<h3>
-FIRST ROUND
-</h3>
-
-<div class="time">
-⏰ 4:00 PM
-</div>
-
-<div
-class="number"
-id="shillongFirst">
-
---
-
-</div>
-
-</div>
-
-
-<div class="result second">
-
-<h3>
-SECOND ROUND
-</h3>
-
-<div class="time">
-⏰ 5:00 PM
-</div>
-
-<div
-class="number"
-id="shillongSecond">
-
---
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="updated"
-id="shillongUpdated">
-
-Waiting for today's result...
-
-</div>
-
-</div>
-
-
-
-<!-- KHANAPARA -->
-
-<div class="card">
-
-<div class="card-header">
-
-<h2>
-🏹 Khanapara Teer
-</h2>
-
-<span class="live">
-● LIVE
-</span>
-
-</div>
-
-<div
-class="date"
-id="khanaparaDate">
-
-Loading...
-
-</div>
-
-
-<div class="result-box">
-
-
-<div class="result first">
-
-<h3>
-FIRST ROUND
-</h3>
-
-<div class="time">
-⏰ 4:00 PM
-</div>
-
-<div
-class="number"
-id="khanaparaFirst">
-
---
-
-</div>
-
-</div>
-
-
-<div class="result second">
-
-<h3>
-SECOND ROUND
-</h3>
-
-<div class="time">
-⏰ 5:00 PM
-</div>
-
-<div
-class="number"
-id="khanaparaSecond">
-
---
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="updated"
-id="khanaparaUpdated">
-
-Waiting for today's result...
-
-</div>
-
-</div>
-
-
-
-<!-- WHATSAPP -->
-
-<a
-class="whatsapp"
-href="https://api.whatsapp.com/send?phone=919549541057&text=Hello%20Gutti"
-target="_blank"
-rel="noopener">
-
-💬 WhatsApp Gutti
-
-</a>
-
-
-
-<!-- INFO -->
-
-<div class="info-card">
-
-<h2>
-🏹 About Teer Results
-</h2>
-
-<p>
-Teer is a traditional archery-based game associated with
-Meghalaya and the surrounding region. Shillong Teer and
-Khanapara Teer are commonly followed for their scheduled
-round results.
-</p>
-
-<p>
-Teer Result Today presents First Round and Second Round
-information in a clear format. The website does not generate
-or predict result numbers. Results displayed here are entered
-through the site's administration panel.
-</p>
-
-</div>
-
-
-
-<!-- HISTORY -->
-
-<div class="history-title">
-
-<h2>
-📜 Previous Results Chart
-</h2>
-
-<p>
-Complete saved result history
-</p>
-
-</div>
-
-
-
-<!-- SEARCH -->
-
-<div class="search-box">
-
-<label>
-🔎 Search Previous Result by Date
-</label>
-
-<div class="search-controls">
-
-<input
-type="date"
-id="dateSearch">
-
-<button
-id="clearSearch">
-
-Show All
-
-</button>
-
-</div>
-
-</div>
-
-
-
-<!-- SHILLONG HISTORY -->
-
-<div class="history-card">
-
-<h3>
-🏹 Shillong Teer Previous Chart
-</h3>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Date</th>
-<th>FR</th>
-<th>FR Time</th>
-<th>SR</th>
-<th>SR Time</th>
-
-</tr>
-
-</thead>
-
-<tbody
-id="shillongHistory">
-
-<tr>
-
-<td colspan="5">
-Loading previous results...
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-
-<!-- KHANAPARA HISTORY -->
-
-<div class="history-card">
-
-<h3>
-🏹 Khanapara Teer Previous Chart
-</h3>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Date</th>
-<th>FR</th>
-<th>FR Time</th>
-<th>SR</th>
-<th>SR Time</th>
-
-</tr>
-
-</thead>
-
-<tbody
-id="khanaparaHistory">
-
-<tr>
-
-<td colspan="5">
-Loading previous results...
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- FOOTER -->
 
 <footer>
-
-<div>
-<strong>TEER RESULT TODAY</strong>
-</div>
-
-<div style="margin-top:7px;">
-Shillong Teer & Khanapara Teer Results
-</div>
-
-<div style="margin-top:7px;">
-© 2026 Teer Result Today
-</div>
-
+  <div><strong>TEER RESULT TODAY</strong></div>
+  <div style="margin-top:7px;">Shillong Teer & Khanapara Teer Results</div>
+  <div style="margin-top:7px;">© 2026 Teer Result Today</div>
 </footer>
-
-
 
 <script type="module">
 
-
-/* FIREBASE */
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-
-
-import {
-getFirestore,
-doc,
-onSnapshot,
-collection,
-query,
-where,
-onSnapshot as historySnapshot
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+  getFirestore,
+  doc,
+  onSnapshot,
+  collection,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
 const firebaseConfig = {
-
-apiKey:
-"AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
-
-authDomain:
-"teer-result-today.firebaseapp.com",
-
-projectId:
-"teer-result-today",
-
-storageBucket:
-"teer-result-today.firebasestorage.app",
-
-messagingSenderId:
-"903009219263",
-
-appId:
-"1:903009219263:web:b10f24ed08ad2cc3904c0a",
-
-measurementId:
-"G-NL95SM0CJM"
-
+  apiKey: "AIzaSyDAKQoepCL8rj5bYeb-cA2VY2vJzNhCUsE",
+  authDomain: "teer-result-today.firebaseapp.com",
+  projectId: "teer-result-today",
+  storageBucket: "teer-result-today.firebasestorage.app",
+  messagingSenderId: "903009219263",
+  appId: "1:903009219263:web:b10f24ed08ad2cc3904c0a",
+  measurementId: "G-NL95SM0CJM"
 };
 
 
-const app =
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const db =
-getFirestore(app);
-
-
-
-/* INDIA DATE */
 
 function getIndiaDate(){
 
-const parts =
-new Intl.DateTimeFormat(
-"en-CA",
-{
-timeZone:"Asia/Kolkata",
-year:"numeric",
-month:"2-digit",
-day:"2-digit"
-}
-).formatToParts(new Date());
+  const parts = new Intl.DateTimeFormat(
+    "en-CA",
+    {
+      timeZone:"Asia/Kolkata",
+      year:"numeric",
+      month:"2-digit",
+      day:"2-digit"
+    }
+  ).formatToParts(new Date());
 
-let year="";
-let month="";
-let day="";
+  let year="";
+  let month="";
+  let day="";
 
-parts.forEach(part=>{
+  parts.forEach(part=>{
+    if(part.type==="year") year=part.value;
+    if(part.type==="month") month=part.value;
+    if(part.type==="day") day=part.value;
+  });
 
-if(part.type==="year")
-year=part.value;
-
-if(part.type==="month")
-month=part.value;
-
-if(part.type==="day")
-day=part.value;
-
-});
-
-return year+"-"+month+"-"+day;
-
+  return year+"-"+month+"-"+day;
 }
 
 
-const today =
-getIndiaDate();
+const today = getIndiaDate();
 
-
-
-/* FORMAT DATE */
 
 function formatDate(date){
 
-if(!date)
-return "";
+  if(!date) return "";
 
-const parts =
-date.split("-");
+  const parts = date.split("-");
 
-return parts[2]+"-"+parts[1]+"-"+parts[0];
-
+  return parts[2]+"-"+parts[1]+"-"+parts[0];
 }
 
-
-
-/* TODAY LIVE RESULT */
 
 function loadToday(teer){
 
-const id =
-teer+"_"+today;
+  const id = teer+"_"+today;
+  const ref = doc(db,"results",id);
 
-const ref =
-doc(db,"results",id);
+  onSnapshot(ref,snapshot=>{
 
+    const prefix =
+      teer==="shillong"
+      ? "shillong"
+      : "khanapara";
 
-onSnapshot(
-ref,
-snapshot=>{
+    document.getElementById(prefix+"Date").textContent =
+      formatDate(today);
 
-const prefix =
-teer==="shillong"
-? "shillong"
-: "khanapara";
+    if(!snapshot.exists()){
 
+      document.getElementById(prefix+"First").textContent="--";
+      document.getElementById(prefix+"Second").textContent="--";
+      document.getElementById(prefix+"Updated").textContent =
+        "Waiting for today's result...";
 
-document
-.getElementById(prefix+"Date")
-.textContent =
-formatDate(today);
+      return;
+    }
 
+    const data = snapshot.data();
 
-if(!snapshot.exists()){
+    document.getElementById(prefix+"First").textContent =
+      data.firstRound || "--";
 
-document
-.getElementById(prefix+"First")
-.textContent =
-"--";
+    document.getElementById(prefix+"Second").textContent =
+      data.secondRound || "--";
 
-document
-.getElementById(prefix+"Second")
-.textContent =
-"--";
+    document.getElementById(prefix+"Updated").textContent =
+      "● Live Result Updated";
 
-document
-.getElementById(prefix+"Updated")
-.textContent =
-"Waiting for today's result...";
+  },error=>{
 
-return;
+    console.error("Live result error:",error);
+
+  });
 
 }
 
 
-const data =
-snapshot.data();
+function loadHistory(teer,elementId){
+
+  const historyRef = query(
+    collection(db,"results"),
+    where("teerType","==",teer)
+  );
+
+  onSnapshot(historyRef,snapshot=>{
+
+    const tbody = document.getElementById(elementId);
+
+    tbody.innerHTML="";
+
+    let records=[];
+
+    snapshot.forEach(docSnap=>{
+
+      const data = docSnap.data();
+
+      if(data.date!==today){
+        records.push(data);
+      }
+
+    });
 
 
-document
-.getElementById(prefix+"First")
-.textContent =
-data.firstRound || "--";
+    records.sort((a,b)=>
+      (b.date || "").localeCompare(a.date || "")
+    );
 
 
-document
-.getElementById(prefix+"Second")
-.textContent =
-data.secondRound || "--";
+    const selectedDate =
+      document.getElementById("dateSearch").value;
+
+    if(selectedDate){
+
+      records=records.filter(data=>
+        data.date===selectedDate
+      );
+
+    }
 
 
-document
-.getElementById(prefix+"Updated")
-.textContent =
-"● Live Result Updated";
+    if(records.length===0){
 
-},
-error=>{
+      tbody.innerHTML=`
+        <tr>
+          <td colspan="5" class="empty">
+            No previous results available.
+          </td>
+        </tr>
+      `;
 
-console.error(
-"Live result error:",
-error
-);
-
-});
-
-}
+      return;
+    }
 
 
+    records.forEach(data=>{
 
-/*
-LIFETIME PUBLIC HISTORY
+      const frTime =
+        data.firstRoundTime || "4:00 PM";
 
-Important:
-There is NO limit(30) here.
+      const srTime =
+        data.secondRoundTime || "5:00 PM";
 
-All saved Firebase records
-can be displayed publicly.
+      const row=document.createElement("tr");
 
-We sort them by date in
-JavaScript.
-*/
+      row.innerHTML=`
+        <td>${formatDate(data.date)}</td>
+        <td class="fr">${data.firstRound || "--"}</td>
+        <td class="result-time">${frTime}</td>
+        <td class="sr">${data.secondRound || "--"}</td>
+        <td class="result-time">${srTime}</td>
+      `;
 
-function loadHistory(
-teer,
-elementId
-){
+      tbody.appendChild(row);
 
-const historyRef =
-query(
+    });
 
-collection(db,"results"),
+  },error=>{
 
-where(
-"teerType",
-"==",
-teer
-)
+    console.error("History error:",error);
 
-);
+    document.getElementById(elementId).innerHTML=`
+      <tr>
+        <td colspan="5" class="empty">
+          Unable to load previous results.
+        </td>
+      </tr>
+    `;
 
-
-historySnapshot(
-
-historyRef,
-
-snapshot=>{
-
-const tbody =
-document.getElementById(
-elementId
-);
-
-tbody.innerHTML="";
-
-
-let records=[];
-
-
-snapshot.forEach(
-docSnap=>{
-
-const data =
-docSnap.data();
-
-
-/*
-Keep all records.
-
-Today's result is not shown
-in previous chart because
-it is already displayed above.
-*/
-
-if(data.date!==today){
-
-records.push(data);
+  });
 
 }
 
-});
-
-
-/*
-Latest date first
-*/
-
-records.sort(
-(a,b)=>
-(b.date || "")
-.localeCompare(
-a.date || ""
-)
-);
-
-
-/*
-Date search
-*/
-
-const selectedDate =
-document
-.getElementById("dateSearch")
-.value;
-
-
-if(selectedDate){
-
-records =
-records.filter(
-data=>
-data.date===selectedDate
-);
-
-}
-
-
-if(records.length===0){
-
-tbody.innerHTML=`
-
-<tr>
-
-<td
-colspan="5"
-class="empty">
-
-No previous results available.
-
-</td>
-
-</tr>
-
-`;
-
-return;
-
-}
-
-
-records.forEach(
-data=>{
-
-const frTime =
-data.firstRoundTime
-|| "4:00 PM";
-
-const srTime =
-data.secondRoundTime
-|| "5:00 PM";
-
-
-const row =
-document.createElement("tr");
-
-
-row.innerHTML=`
-
-<td>
-${formatDate(data.date)}
-</td>
-
-<td class="fr">
-${data.firstRound || "--"}
-</td>
-
-<td class="result-time">
-${frTime}
-</td>
-
-<td class="sr">
-${data.secondRound || "--"}
-</td>
-
-<td class="result-time">
-${srTime}
-</td>
-
-`;
-
-
-tbody.appendChild(row);
-
-});
-
-},
-error=>{
-
-console.error(
-"History error:",
-error
-);
-
-document
-.getElementById(elementId)
-.innerHTML=`
-
-<tr>
-
-<td
-colspan="5"
-class="empty">
-
-Unable to load previous results.
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-}
-
-
-
-/* REFRESH BOTH CHARTS */
 
 function refreshHistory(){
 
-loadHistory(
-"shillong",
-"shillongHistory"
-);
-
-loadHistory(
-"khanapara",
-"khanaparaHistory"
-);
+  loadHistory("shillong","shillongHistory");
+  loadHistory("khanapara","khanaparaHistory");
 
 }
 
 
-
-/* DATE SEARCH */
-
-document
-.getElementById("dateSearch")
-.addEventListener(
-"change",
-refreshHistory
-);
+document.getElementById("dateSearch")
+  .addEventListener("change",refreshHistory);
 
 
-document
-.getElementById("clearSearch")
-.addEventListener(
-"click",
-()=>{
+document.getElementById("clearSearch")
+  .addEventListener("click",()=>{
 
-document
-.getElementById("dateSearch")
-.value="";
+    document.getElementById("dateSearch").value="";
+
+    refreshHistory();
+
+  });
+
+
+loadToday("shillong");
+loadToday("khanapara");
 
 refreshHistory();
-
-});
-
-
-
-/* START */
-
-loadToday(
-"shillong"
-);
-
-loadToday(
-"khanapara"
-);
-
-
-refreshHistory();
-
 
 </script>
 
