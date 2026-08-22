@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Teer Result Today</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      color: #222;
+    }
+
+    .container {
+      max-width: 550px;
+      margin: 50px auto;
+      padding: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      border: 0;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    #googleLogin {
+      background: #111827;
+      color: white;
+    }
+
+    #saveResult {
+      background: #16a34a;
+      color: white;
+    }
+
+    #logout {
+      background: #dc2626;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .status {
+      text-align: center;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+
+    .user {
+      text-align: center;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>Admin Panel</h1>
+
+    <!-- LOGIN -->
+    <div id="loginSection">
+
+      <p style="text-align:center;">
+        Admin login with Google
+      </p>
+
+      <button id="googleLogin">
+        Login with Google
+      </button>
+
+      <div class="status" id="loginStatus"></div>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+    <div id="adminSection" class="hidden">
+
+      <div class="user">
+        Logged in as:
+        <strong id="userEmail"></strong>
+      </div>
+
+      <label>Date</label>
+      <input type="date" id="resultDate">
+
+      <label>First Round</label>
+      <input
+        type="text"
+        id="firstRound"
+        placeholder="Enter First Round"
+      >
+
+      <label>Second Round</label>
+      <input
+        type="text"
+        id="secondRound"
+        placeholder="Enter Second Round"
+      >
+
+      <button id="saveResult">
+        Save Result
+      </button>
+
+      <button id="logout">
+        Logout
+      </button>
+
+      <div class="status" id="saveStatus"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Firebase -->
+<script type="module">
+
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+  import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+  import {
+    getFirestore,
+    doc,
+    setDoc
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+  // ==========================================
+  // PASTE YOUR FIREBASE CONFIG HERE
+  // ==========================================
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.firebasestorage.app",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
+
+  const db = getFirestore(app);
+
+  const provider = new GoogleAuthProvider();
+
+
+  // ==========================================
+  // GOOGLE LOGIN
+  // ==========================================
+
+  document.getElementById("googleLogin").addEventListener(
+    "click",
+    async () => {
+
+      try {
+
+        await signInWithPopup(auth, provider);
+
+      } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("loginStatus").textContent =
+          "Login failed: " + error.message;
+
+      }
+
+    }
+  );
+
+
+  // ==========================================
+  // CHECK LOGIN
+  // ==========================================
+
+  onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+      document.getElementById("loginSection")
+        .classList.add("hidden");
+
+      document.getElementById("adminSection")
+        .classList.remove("hidden");
+
+      document.getElementById("userEmail")
+        .textContent = user.email;
+
+    } else {
+
+      document.getElementById("loginSection")
+        .classList.remove("hidden");
+
+      document.getElementById("adminSection")
+        .classList.add("hidden");
+
+    }
+
+  });
+
+
+  // ==========================================
+  // SAVE RESULT
+  // ==========================================
+
+  document.getElementById("saveResult").addEventListener(
+    "click",
+    async () => {
+
+      const date =
+        document.getElementById("resultDate").value;
+
+      const firstRound =
+        document.getElementById("firstRound").value.trim();
+
+      const secondRound =
+        document.getElementById("secondRound").value.trim();
+
+
+      if (!date || !firstRound || !secondRound) {
+
+        document.getElementById("saveStatus").textContent =
+          "Please fill all fields.";
+
+        return;
+      }
+
+
+      try {
+
+        await setDoc(
+          doc(db, "results", "latest"),
+          {
+            date: date,
+            firstRound: firstRound,
+            secondRound: secondRound,
+            updatedAt: new Date().toISOString()
+          }
+        );
+
+
+        document.getElementById("saveStatus").textContent =
+          "Result saved successfully!";
+
+      } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("saveStatus").textContent =
+          "Save failed: " + error.message;
+
+      }
+
+    }
+  );
+
+
+  // ==========================================
+  // LOGOUT
+  // ==========================================
+
+  document.getElementById("logout").addEventListener(
+    "click",
+    async () => {
+
+      await signOut(auth);
+
+    }
+  );
+
+</script>
+
+</body>
+</html>
