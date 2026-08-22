@@ -9,202 +9,195 @@
 <style>
 
 *{
-  box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#eef2ff,#fff7ed);
-  color:#172033;
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#eef2ff,#fff7ed);
+color:#172033;
 }
 
 .container{
-  max-width:560px;
-  margin:35px auto;
-  padding:15px;
+max-width:560px;
+margin:35px auto;
+padding:15px;
 }
 
 .card{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 7px 25px rgba(0,0,0,.10);
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 7px 25px rgba(0,0,0,.10);
 }
 
 h1{
-  text-align:center;
-  color:#312e81;
-  margin-top:0;
+text-align:center;
+color:#312e81;
+margin-top:0;
 }
 
 .user{
-  text-align:center;
-  background:#f1f5f9;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:20px;
+text-align:center;
+background:#f1f5f9;
+padding:12px;
+border-radius:10px;
+margin-bottom:20px;
 }
 
 label{
-  display:block;
-  font-weight:bold;
-  margin-top:14px;
-  margin-bottom:6px;
+display:block;
+font-weight:bold;
+margin-top:14px;
+margin-bottom:6px;
 }
 
 select,
 input{
-  width:100%;
-  padding:13px;
-  border:1px solid #cbd5e1;
-  border-radius:9px;
-  font-size:16px;
-  background:white;
+width:100%;
+padding:13px;
+border:1px solid #cbd5e1;
+border-radius:9px;
+font-size:16px;
+background:white;
 }
 
 button{
-  width:100%;
-  border:0;
-  padding:14px;
-  border-radius:9px;
-  font-size:16px;
-  font-weight:bold;
-  margin-top:10px;
-  cursor:pointer;
+width:100%;
+border:0;
+padding:14px;
+border-radius:9px;
+font-size:16px;
+font-weight:bold;
+margin-top:10px;
+cursor:pointer;
 }
 
 #googleLogin{
-  background:#111827;
-  color:white;
+background:#111827;
+color:white;
 }
 
 #saveResult{
-  background:#16a34a;
-  color:white;
+background:#16a34a;
+color:white;
 }
 
-#todayOff{
-  background:#f59e0b;
-  color:white;
+#saveOff{
+background:#f59e0b;
+color:white;
 }
 
 #deleteResult{
-  background:#dc2626;
-  color:white;
+background:#dc2626;
+color:white;
 }
 
 #logout{
-  background:#475569;
-  color:white;
+background:#475569;
+color:white;
 }
 
 .hidden{
-  display:none;
+display:none;
 }
 
 .status{
-  text-align:center;
-  margin-top:15px;
-  font-weight:bold;
+text-align:center;
+margin-top:15px;
+font-weight:bold;
 }
 
 .success{
-  color:#15803d;
+color:#15803d;
 }
 
 .error{
-  color:#dc2626;
+color:#dc2626;
 }
 
 .info{
-  background:#eff6ff;
-  color:#1d4ed8;
-  padding:12px;
-  border-radius:9px;
-  margin-top:15px;
-  font-size:14px;
-  line-height:1.5;
+background:#eff6ff;
+color:#1d4ed8;
+padding:12px;
+border-radius:9px;
+margin-top:15px;
+font-size:14px;
+line-height:1.5;
 }
 
-.sunday-warning{
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  color:#c2410c;
-  padding:14px;
-  border-radius:10px;
-  margin-top:15px;
-  text-align:center;
-  font-weight:bold;
-  line-height:1.6;
+.warning{
+background:#fff7ed;
+border:1px solid #fed7aa;
+color:#c2410c;
+padding:14px;
+border-radius:10px;
+margin-top:15px;
+text-align:center;
+font-weight:bold;
+line-height:1.6;
 }
 
 .time-box{
-  background:#f8fafc;
-  padding:12px;
-  border-radius:9px;
-  text-align:center;
-  margin-top:15px;
-  line-height:1.6;
+background:#f8fafc;
+padding:12px;
+border-radius:9px;
+text-align:center;
+margin-top:15px;
+line-height:1.6;
 }
 
 .current{
-  background:#ecfdf5;
-  border:1px solid #bbf7d0;
-  padding:14px;
-  border-radius:10px;
-  margin-top:15px;
-  line-height:1.7;
+background:#ecfdf5;
+border:1px solid #bbf7d0;
+padding:14px;
+border-radius:10px;
+margin-top:15px;
+line-height:1.7;
 }
 
 .round-box{
-  border:1px solid #e2e8f0;
-  padding:15px;
-  border-radius:12px;
-  margin-top:15px;
+border:1px solid #e2e8f0;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
 }
 
 .round-box h3{
-  margin:0 0 10px;
-  color:#4338ca;
+margin:0 0 10px;
+color:#4338ca;
+}
+
+.status-box{
+padding:15px;
+background:#f8fafc;
+border-radius:12px;
+margin-top:15px;
+}
+
+.status-option{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
+padding:12px;
+border-radius:9px;
+background:white;
+border:1px solid #e2e8f0;
+}
+
+.status-option input{
+width:auto;
 }
 
 .small{
-  font-size:13px;
-  color:#64748b;
-}
-
-
-/* SOCIAL */
-
-.social-box{
-  margin-top:20px;
-  padding:15px;
-  background:#f8fafc;
-  border-radius:12px;
-  text-align:center;
-}
-
-.social-box h3{
-  margin:0 0 10px;
-  color:#312e81;
-}
-
-.telegram-btn{
-  display:block;
-  width:100%;
-  padding:13px;
-  margin-top:10px;
-  border-radius:9px;
-  color:white;
-  background:#229ED9;
-  text-decoration:none;
-  font-weight:bold;
+font-size:13px;
+color:#64748b;
 }
 
 </style>
 </head>
-
 
 <body>
 
@@ -213,7 +206,6 @@ button{
 <div class="card">
 
 <h1>🎯 Admin Panel</h1>
-
 
 <!-- LOGIN -->
 
@@ -236,7 +228,6 @@ Admin Login with Google
 
 <div id="adminSection" class="hidden">
 
-
 <div class="user">
 
 Logged in as:
@@ -247,37 +238,10 @@ Logged in as:
 </div>
 
 
-<!-- TEER -->
-
-<label>
-1. Select Teer
-</label>
-
-<select id="teerType">
-
-<option value="">
-Select Teer
-</option>
-
-<option value="shillong">
-Shillong Teer
-</option>
-
-<option value="khanapara">
-Khanapara Teer
-</option>
-
-<option value="both">
-Shillong + Khanapara
-</option>
-
-</select>
-
-
 <!-- DATE -->
 
 <label>
-2. Select Result Date
+1. Select Result Date
 </label>
 
 <input
@@ -285,19 +249,94 @@ type="date"
 id="resultDate">
 
 
-<!-- SUNDAY -->
+<!-- DAY NOTICE -->
 
 <div
-id="sundayWarning"
-class="sunday-warning hidden">
+id="dayNotice"
+class="warning hidden">
+</div>
 
-🛑 Sunday — Today Off
 
-<br>
+<!-- SHILLONG STATUS -->
 
-<span class="small">
-आज Teer result नहीं है।
-</span>
+<div class="status-box">
+
+<h3>🏹 Shillong Teer Status</h3>
+
+<div class="status-option">
+
+<input
+type="radio"
+name="shillongStatus"
+value="on"
+id="shillongOn"
+checked>
+
+<label
+for="shillongOn"
+style="margin:0;">
+🟢 Shillong Result Available
+</label>
+
+</div>
+
+<div class="status-option">
+
+<input
+type="radio"
+name="shillongStatus"
+value="off"
+id="shillongOff">
+
+<label
+for="shillongOff"
+style="margin:0;">
+🛑 Shillong Today Off / XX
+</label>
+
+</div>
+
+</div>
+
+
+<!-- KHANAPARA STATUS -->
+
+<div class="status-box">
+
+<h3>🏹 Khanapara Teer Status</h3>
+
+<div class="status-option">
+
+<input
+type="radio"
+name="khanaparaStatus"
+value="on"
+id="khanaparaOn"
+checked>
+
+<label
+for="khanaparaOn"
+style="margin:0;">
+🟢 Khanapara Result Available
+</label>
+
+</div>
+
+<div class="status-option">
+
+<input
+type="radio"
+name="khanaparaStatus"
+value="off"
+id="khanaparaOff">
+
+<label
+for="khanaparaOff"
+style="margin:0;">
+🛑 Khanapara Today Off / XX
+</label>
+
+</div>
 
 </div>
 
@@ -312,6 +351,11 @@ class="current hidden">
 
 <br>
 
+Shillong:
+<span id="currentShillongStatus">--</span>
+
+<br>
+
 Shillong FR:
 <span id="currentShillongFR">--</span>
 
@@ -319,6 +363,11 @@ Shillong FR:
 
 Shillong SR:
 <span id="currentShillongSR">--</span>
+
+<br><br>
+
+Khanapara:
+<span id="currentKhanaparaStatus">--</span>
 
 <br>
 
@@ -333,28 +382,7 @@ Khanapara SR:
 </div>
 
 
-<!-- ROUND -->
-
-<label>
-3. What do you want to update?
-</label>
-
-<select id="updateType">
-
-<option value="both">
-FR + SR — Both
-</option>
-
-<option value="fr">
-FR — First Round Only
-</option>
-
-<option value="sr">
-SR — Second Round Only
-</option>
-
-</select>
-
+<!-- TIME -->
 
 <div class="time-box">
 
@@ -367,7 +395,7 @@ SR — Second Round Only
 </div>
 
 
-<!-- SHILLONG -->
+<!-- SHILLONG INPUT -->
 
 <div
 id="shillongBox"
@@ -400,7 +428,7 @@ placeholder="Enter SR">
 </div>
 
 
-<!-- KHANAPARA -->
+<!-- KHANAPARA INPUT -->
 
 <div
 id="khanaparaBox"
@@ -435,29 +463,29 @@ placeholder="Enter SR">
 
 <div class="info">
 
-💡 <strong>Manual Update:</strong><br>
-
-अगर सिर्फ FR बदलना है तो
-<strong>FR — First Round Only</strong> चुनें।
+💡 <strong>How to use:</strong>
 
 <br><br>
 
-अगर सिर्फ SR बदलना है तो
-<strong>SR — Second Round Only</strong> चुनें।
+Normal day:
+<strong>Shillong ON + Khanapara ON</strong>
 
 <br><br>
 
-अगर किसी दिन result नहीं है, तो
-<strong>🛑 Today Off / XX</strong> बटन दबाएँ।
+अगर Shillong चालू है लेकिन Khanapara बंद है:
+<strong>Shillong ON + Khanapara OFF</strong>
+
+<br><br>
+
+अगर किसी holiday या Sunday पर दोनों बंद हैं:
+<strong>Shillong OFF + Khanapara OFF</strong>
+
+<br><br>
+
+जिस Teer को OFF करेंगे, उसका FR और SR automatically
+<strong>XX</strong> save होगा।
 
 </div>
-
-
-<!-- TODAY OFF -->
-
-<button id="todayOff">
-🛑 Today Off / Save XX
-</button>
 
 
 <!-- SAVE -->
@@ -467,30 +495,18 @@ placeholder="Enter SR">
 </button>
 
 
+<!-- OFF -->
+
+<button id="saveOff">
+🛑 Save Selected OFF / XX
+</button>
+
+
 <!-- DELETE -->
 
 <button id="deleteResult">
 🗑️ Delete Selected Result
 </button>
-
-
-<!-- TELEGRAM -->
-
-<div class="social-box">
-
-<h3>📲 Join Our Telegram</h3>
-
-<a
-href="https://t.me/shillong_khanapara_teer_02"
-target="_blank"
-rel="noopener noreferrer"
-class="telegram-btn">
-
-📲 Join Telegram
-
-</a>
-
-</div>
 
 
 <!-- LOGOUT -->
@@ -504,7 +520,6 @@ class="telegram-btn">
 id="saveStatus"
 class="status">
 </div>
-
 
 </div>
 
@@ -585,7 +600,7 @@ const provider =
 new GoogleAuthProvider();
 
 
-/* ONLY ADMIN */
+/* ADMIN */
 
 const ADMIN_EMAIL =
 "rbdpublicationcompany@gmail.com";
@@ -593,14 +608,8 @@ const ADMIN_EMAIL =
 
 /* ELEMENTS */
 
-const teerType =
-document.getElementById("teerType");
-
 const resultDate =
 document.getElementById("resultDate");
-
-const updateType =
-document.getElementById("updateType");
 
 const shillongFR =
 document.getElementById("shillongFR");
@@ -615,7 +624,7 @@ const khanaparaSR =
 document.getElementById("khanaparaSR");
 
 
-/* INDIA DATE */
+/* TODAY INDIA */
 
 function getTodayIndia(){
 
@@ -630,69 +639,68 @@ day:"2-digit"
 }
 ).formatToParts(new Date());
 
-let year = "";
-let month = "";
-let day = "";
+let year="";
+let month="";
+let day="";
 
-parts.forEach(part => {
+parts.forEach(part=>{
 
-if(part.type === "year")
-year = part.value;
+if(part.type==="year")
+year=part.value;
 
-if(part.type === "month")
-month = part.value;
+if(part.type==="month")
+month=part.value;
 
-if(part.type === "day")
-day = part.value;
+if(part.type==="day")
+day=part.value;
 
 });
 
-return year + "-" + month + "-" + day;
+return year+"-"+month+"-"+day;
 
 }
-
 
 resultDate.value =
 getTodayIndia();
 
 
-/* SUNDAY CHECK */
+/* SUNDAY */
 
-function isSunday(dateString){
+function isSunday(date){
 
-if(!dateString)
+if(!date)
 return false;
 
-const date =
-new Date(
-dateString + "T00:00:00"
-);
-
-return date.getDay() === 0;
+return new Date(
+date+"T00:00:00"
+).getDay()===0;
 
 }
 
 
-function updateSundayNotice(){
+function updateDayNotice(){
 
-const warning =
-document.getElementById("sundayWarning");
+const notice =
+document.getElementById("dayNotice");
 
 if(isSunday(resultDate.value)){
 
-warning.classList.remove("hidden");
+notice.classList.remove("hidden");
+
+notice.innerHTML =
+"🛑 <strong>Sunday</strong><br>आज result normally नहीं होता। जरूरत हो तो दोनों Teer को OFF / XX करें।";
 
 }
 else{
 
-warning.classList.add("hidden");
+notice.classList.add("hidden");
 
 }
 
 }
 
 
-updateSundayNotice();
+updateDayNotice();
 
 
 /* LOGIN */
@@ -700,7 +708,7 @@ updateSundayNotice();
 document
 .getElementById("googleLogin")
 .onclick =
-async () => {
+async()=>{
 
 try{
 
@@ -714,13 +722,13 @@ catch(error){
 
 document
 .getElementById("loginStatus")
-.className =
+.className=
 "status error";
 
 document
 .getElementById("loginStatus")
-.textContent =
-"Login failed: " +
+.textContent=
+"Login failed: "+
 error.message;
 
 }
@@ -732,7 +740,7 @@ error.message;
 
 onAuthStateChanged(
 auth,
-user => {
+user=>{
 
 if(!user){
 
@@ -752,19 +760,19 @@ return;
 if(
 !user.email ||
 user.email.toLowerCase()
-!== ADMIN_EMAIL.toLowerCase()
+!==ADMIN_EMAIL.toLowerCase()
 ){
 
 signOut(auth);
 
 document
 .getElementById("loginStatus")
-.className =
+.className=
 "status error";
 
 document
 .getElementById("loginStatus")
-.textContent =
+.textContent=
 "Access denied. Admin email only.";
 
 return;
@@ -782,81 +790,37 @@ document
 
 document
 .getElementById("userEmail")
-.textContent =
+.textContent=
 user.email;
 
 });
 
 
-/* SHOW / HIDE */
+/* STATUS */
 
-function updateBoxes(){
+function getStatus(name){
 
-const type =
-teerType.value;
-
-const shillongBox =
-document.getElementById("shillongBox");
-
-const khanaparaBox =
-document.getElementById("khanaparaBox");
-
-
-if(type === "shillong"){
-
-shillongBox.classList.remove("hidden");
-
-khanaparaBox.classList.add("hidden");
-
-}
-
-else if(type === "khanapara"){
-
-shillongBox.classList.add("hidden");
-
-khanaparaBox.classList.remove("hidden");
-
-}
-
-else if(type === "both"){
-
-shillongBox.classList.remove("hidden");
-
-khanaparaBox.classList.remove("hidden");
-
-}
-
-else{
-
-shillongBox.classList.remove("hidden");
-
-khanaparaBox.classList.remove("hidden");
-
-}
+return document.querySelector(
+'input[name="'+name+'"]:checked'
+).value;
 
 }
 
 
-teerType.addEventListener(
-"change",
-async () => {
+function setStatus(
+name,
+value
+){
 
-updateBoxes();
+const radio =
+document.querySelector(
+'input[name="'+name+'"][value="'+value+'"]'
+);
 
-await loadResults();
+if(radio)
+radio.checked=true;
 
-});
-
-
-resultDate.addEventListener(
-"change",
-async () => {
-
-updateSundayNotice();
-
-await loadResults();
-
-});
+}
 
 
 /* GET RESULT */
@@ -869,24 +833,18 @@ resultDate.value;
 if(!date)
 return null;
 
-const id =
-type + "_" + date;
-
 const ref =
 doc(
 db,
 "results",
-id
+type+"_"+date
 );
 
 const snapshot =
 await getDoc(ref);
 
-if(snapshot.exists()){
-
+if(snapshot.exists())
 return snapshot.data();
-
-}
 
 return null;
 
@@ -897,10 +855,7 @@ return null;
 
 async function loadResults(){
 
-const type =
-teerType.value;
-
-if(!type || !resultDate.value)
+if(!resultDate.value)
 return;
 
 clearInputs();
@@ -919,61 +874,122 @@ document
 .classList.remove("hidden");
 
 
+if(shillong){
+
 document
 .getElementById("currentShillongFR")
-.textContent =
-shillong?.firstRound || "--";
-
+.textContent=
+shillong.firstRound||"--";
 
 document
 .getElementById("currentShillongSR")
-.textContent =
-shillong?.secondRound || "--";
-
-
-document
-.getElementById("currentKhanaparaFR")
-.textContent =
-khanapara?.firstRound || "--";
-
+.textContent=
+shillong.secondRound||"--";
 
 document
-.getElementById("currentKhanaparaSR")
-.textContent =
-khanapara?.secondRound || "--";
+.getElementById("currentShillongStatus")
+.textContent=
+shillong.isTodayOff
+?"🛑 OFF / XX"
+:"🟢 ON";
 
+setStatus(
+"shillongStatus",
+shillong.isTodayOff
+?"off"
+:"on"
+);
 
-if(shillong){
+if(!shillong.isTodayOff){
 
-shillongFR.value =
-shillong.firstRound || "";
+shillongFR.value=
+shillong.firstRound||"";
 
-shillongSR.value =
-shillong.secondRound || "";
+shillongSR.value=
+shillong.secondRound||"";
+
+}
+
+}
+else{
+
+document
+.getElementById("currentShillongStatus")
+.textContent="--";
+
+document
+.getElementById("currentShillongFR")
+.textContent="--";
+
+document
+.getElementById("currentShillongSR")
+.textContent="--";
+
+setStatus(
+"shillongStatus",
+"on"
+);
 
 }
 
 
 if(khanapara){
 
-khanaparaFR.value =
-khanapara.firstRound || "";
+document
+.getElementById("currentKhanaparaFR")
+.textContent=
+khanapara.firstRound||"--";
 
-khanaparaSR.value =
-khanapara.secondRound || "";
+document
+.getElementById("currentKhanaparaSR")
+.textContent=
+khanapara.secondRound||"--";
+
+document
+.getElementById("currentKhanaparaStatus")
+.textContent=
+khanapara.isTodayOff
+?"🛑 OFF / XX"
+:"🟢 ON";
+
+setStatus(
+"khanaparaStatus",
+khanapara.isTodayOff
+?"off"
+:"on"
+);
+
+if(!khanapara.isTodayOff){
+
+khanaparaFR.value=
+khanapara.firstRound||"";
+
+khanaparaSR.value=
+khanapara.secondRound||"";
 
 }
 
+}
+else{
 
 document
-.getElementById("saveStatus")
-.className =
-"status";
+.getElementById("currentKhanaparaStatus")
+.textContent="--";
 
 document
-.getElementById("saveStatus")
-.textContent =
-"Existing result loaded.";
+.getElementById("currentKhanaparaFR")
+.textContent="--";
+
+document
+.getElementById("currentKhanaparaSR")
+.textContent="--";
+
+setStatus(
+"khanaparaStatus",
+"on"
+);
+
+}
 
 }
 catch(error){
@@ -989,11 +1005,10 @@ console.error(error);
 
 function clearInputs(){
 
-shillongFR.value = "";
-shillongSR.value = "";
-
-khanaparaFR.value = "";
-khanaparaSR.value = "";
+shillongFR.value="";
+shillongSR.value="";
+khanaparaFR.value="";
+khanaparaSR.value="";
 
 }
 
@@ -1011,7 +1026,7 @@ return /^\d+$/.test(value);
 
 async function saveOne(
 type,
-oldData,
+status,
 fr,
 sr
 ){
@@ -1019,38 +1034,15 @@ sr
 const date =
 resultDate.value;
 
-const id =
-type + "_" + date;
-
-
-const finalFR =
-fr !== ""
-? fr
-: (oldData?.firstRound || "");
-
-
-const finalSR =
-sr !== ""
-? sr
-: (oldData?.secondRound || "");
-
-
-if(
-finalFR === "" &&
-finalSR === ""
-){
-
-return false;
-
-}
-
+const isOff =
+status==="off";
 
 await setDoc(
 
 doc(
 db,
 "results",
-id
+type+"_"+date
 ),
 
 {
@@ -1059,17 +1051,21 @@ teerType:type,
 
 date:date,
 
-firstRound:finalFR,
+firstRound:
+isOff
+?"XX"
+:fr,
 
-secondRound:finalSR,
+secondRound:
+isOff
+?"XX"
+:sr,
 
 firstRoundTime:"4:00 PM",
 
 secondRoundTime:"5:00 PM",
 
-isTodayOff:
-finalFR === "XX" &&
-finalSR === "XX",
+isTodayOff:isOff,
 
 updatedAt:
 new Date().toISOString(),
@@ -1086,180 +1082,52 @@ merge:true
 );
 
 
+/* RETURN */
+
 return true;
 
 }
-
-
-/* TODAY OFF */
-
-document
-.getElementById("todayOff")
-.onclick =
-async () => {
-
-const type =
-teerType.value;
-
-const date =
-resultDate.value;
-
-
-if(!type || !date){
-
-document
-.getElementById("saveStatus")
-.className =
-"status error";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"Please select Teer and Date.";
-
-return;
-
-}
-
-
-const confirmOff =
-confirm(
-
-"आज का result OFF / XX save करना है?\n\n" +
-
-"Teer: " +
-type.toUpperCase() +
-
-"\nDate: " +
-date +
-
-"\n\nFR = XX\nSR = XX"
-
-);
-
-
-if(!confirmOff)
-return;
-
-
-try{
-
-
-if(
-type === "shillong" ||
-type === "both"
-){
-
-await saveOne(
-"shillong",
-await getResult("shillong"),
-"XX",
-"XX"
-);
-
-}
-
-
-if(
-type === "khanapara" ||
-type === "both"
-){
-
-await saveOne(
-"khanapara",
-await getResult("khanapara"),
-"XX",
-"XX"
-);
-
-}
-
-
-document
-.getElementById("saveStatus")
-.className =
-"status success";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"🛑 Today Off saved successfully — XX / XX";
-
-
-await loadResults();
-
-}
-catch(error){
-
-console.error(error);
-
-document
-.getElementById("saveStatus")
-.className =
-"status error";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"❌ " + error.message;
-
-}
-
-};
 
 
 /* SAVE RESULT */
 
 document
 .getElementById("saveResult")
-.onclick =
-async () => {
-
-const type =
-teerType.value;
+.onclick=
+async()=>{
 
 const date =
 resultDate.value;
 
-const mode =
-updateType.value;
+if(!date){
 
-
-if(!type || !date){
-
-document
-.getElementById("saveStatus")
-.className =
-"status error";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"Please select Teer and Date.";
+showError(
+"Please select Result Date."
+);
 
 return;
 
 }
 
 
+const shillongStatus =
+getStatus("shillongStatus");
+
+const khanaparaStatus =
+getStatus("khanaparaStatus");
+
+
 try{
-
-const shillongOld =
-await getResult("shillong");
-
-const khanaparaOld =
-await getResult("khanapara");
 
 
 /* VALIDATE */
 
 if(
-type === "shillong" ||
-type === "both"
+shillongStatus==="on"
 ){
 
 if(
-shillongFR.value !== "" &&
+shillongFR.value!=="" &&
 !validNumber(shillongFR.value)
 ){
 
@@ -1270,7 +1138,7 @@ throw new Error(
 }
 
 if(
-shillongSR.value !== "" &&
+shillongSR.value!=="" &&
 !validNumber(shillongSR.value)
 ){
 
@@ -1284,12 +1152,11 @@ throw new Error(
 
 
 if(
-type === "khanapara" ||
-type === "both"
+khanaparaStatus==="on"
 ){
 
 if(
-khanaparaFR.value !== "" &&
+khanaparaFR.value!=="" &&
 !validNumber(khanaparaFR.value)
 ){
 
@@ -1300,7 +1167,7 @@ throw new Error(
 }
 
 if(
-khanaparaSR.value !== "" &&
+khanaparaSR.value!=="" &&
 !validNumber(khanaparaSR.value)
 ){
 
@@ -1313,115 +1180,74 @@ throw new Error(
 }
 
 
+/* OLD */
+
+const oldShillong =
+await getResult("shillong");
+
+const oldKhanapara =
+await getResult("khanapara");
+
+
 /* SHILLONG */
 
-if(
-type === "shillong" ||
-type === "both"
-){
+let sFR="";
+let sSR="";
 
-let fr = "";
-let sr = "";
+if(shillongStatus==="on"){
 
+sFR =
+shillongFR.value ||
+oldShillong?.firstRound ||
+"";
 
-if(mode === "fr"){
-
-fr =
-shillongFR.value;
-
-sr = "";
-
-}
-
-else if(mode === "sr"){
-
-fr = "";
-
-sr =
-shillongSR.value;
-
-}
-
-else{
-
-fr =
-shillongFR.value;
-
-sr =
-shillongSR.value;
+sSR =
+shillongSR.value ||
+oldShillong?.secondRound ||
+"";
 
 }
 
 
 await saveOne(
 "shillong",
-shillongOld,
-fr,
-sr
+shillongStatus,
+sFR,
+sSR
 );
-
-}
 
 
 /* KHANAPARA */
 
-if(
-type === "khanapara" ||
-type === "both"
-){
+let kFR="";
+let kSR="";
 
-let fr = "";
-let sr = "";
+if(khanaparaStatus==="on"){
 
+kFR =
+khanaparaFR.value ||
+oldKhanapara?.firstRound ||
+"";
 
-if(mode === "fr"){
-
-fr =
-khanaparaFR.value;
-
-sr = "";
-
-}
-
-else if(mode === "sr"){
-
-fr = "";
-
-sr =
-khanaparaSR.value;
-
-}
-
-else{
-
-fr =
-khanaparaFR.value;
-
-sr =
-khanaparaSR.value;
+kSR =
+khanaparaSR.value ||
+oldKhanapara?.secondRound ||
+"";
 
 }
 
 
 await saveOne(
 "khanapara",
-khanaparaOld,
-fr,
-sr
+khanaparaStatus,
+kFR,
+kSR
 );
 
-}
 
-
-document
-.getElementById("saveStatus")
-.className =
-"status success";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"✅ Result saved / updated successfully!";
+showSuccess(
+"✅ Result / status saved successfully!"
+);
 
 
 await loadResults();
@@ -1429,17 +1255,126 @@ await loadResults();
 }
 catch(error){
 
-console.error(error);
+showError(
+"❌ "+error.message
+);
+
+}
+
+};
+
+
+/* OFF BUTTON */
 
 document
-.getElementById("saveStatus")
-.className =
-"status error";
+.getElementById("saveOff")
+.onclick=
+async()=>{
 
-document
-.getElementById("saveStatus")
-.textContent =
-"❌ " + error.message;
+const date =
+resultDate.value;
+
+if(!date){
+
+showError(
+"Please select Result Date."
+);
+
+return;
+
+}
+
+
+const shillongStatus =
+getStatus("shillongStatus");
+
+const khanaparaStatus =
+getStatus("khanaparaStatus");
+
+
+if(
+shillongStatus!=="off" &&
+khanaparaStatus!=="off"
+){
+
+showError(
+"Please select at least one Teer as OFF."
+);
+
+return;
+
+}
+
+
+const confirmOff =
+confirm(
+
+"Selected OFF status save करना है?\n\n"+
+"Shillong: "+
+(shillongStatus==="off"
+?"OFF / XX"
+:"ON")+
+"\n"+
+"Khanapara: "+
+(khanaparaStatus==="off"
+?"OFF / XX"
+:"ON")+
+"\n\nDate: "+
+date
+
+);
+
+
+if(!confirmOff)
+return;
+
+
+try{
+
+const oldShillong =
+await getResult("shillong");
+
+const oldKhanapara =
+await getResult("khanapara");
+
+
+await saveOne(
+"shillong",
+shillongStatus,
+shillongStatus==="off"
+?"XX"
+:(oldShillong?.firstRound||""),
+shillongStatus==="off"
+?"XX"
+:(oldShillong?.secondRound||"")
+);
+
+
+await saveOne(
+"khanapara",
+khanaparaStatus,
+khanaparaStatus==="off"
+?"XX"
+:(oldKhanapara?.firstRound||""),
+khanaparaStatus==="off"
+?"XX"
+:(oldKhanapara?.secondRound||"")
+);
+
+
+showSuccess(
+"🛑 Selected OFF status saved successfully!"
+);
+
+
+await loadResults();
+
+}
+catch(error){
+
+showError(
+"❌ "+error.message
+);
 
 }
 
@@ -1450,46 +1385,46 @@ document
 
 document
 .getElementById("deleteResult")
-.onclick =
-async () => {
-
-const type =
-teerType.value;
+.onclick=
+async()=>{
 
 const date =
 resultDate.value;
 
 
-if(
-!type ||
-!date ||
-type === "both"
-){
+if(!date){
 
-document
-.getElementById("saveStatus")
-.className =
-"status error";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"Delete के लिए Shillong या Khanapara में से एक select करें.";
+showError(
+"Please select Result Date."
+);
 
 return;
 
 }
 
 
+const shillongStatus =
+getStatus("shillongStatus");
+
+const khanaparaStatus =
+getStatus("khanaparaStatus");
+
+
+const type =
+confirm(
+"Delete Shillong result?\n\n"+
+"OK = Shillong\n"+
+"Cancel = Khanapara"
+)
+?"shillong"
+:"khanapara";
+
+
 const confirmDelete =
 confirm(
-
-"क्या आप यह पूरा result delete करना चाहते हैं?\n\n" +
-
-type.toUpperCase() +
-"\nDate: " +
-date
-
+"क्या आप "+type+
+" का पूरा result delete करना चाहते हैं?\n\n"+
+"Date: "+date
 );
 
 
@@ -1499,33 +1434,21 @@ return;
 
 try{
 
-const id =
-type + "_" + date;
-
-
 await deleteDoc(
 
 doc(
 db,
 "results",
-id
+type+"_"+date
 )
 
 );
 
 
-clearInputs();
-
-
-document
-.getElementById("saveStatus")
-.className =
-"status success";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"🗑️ Result deleted successfully!";
+showSuccess(
+"🗑️ "+type+
+" result deleted successfully!"
+);
 
 
 await loadResults();
@@ -1533,28 +1456,66 @@ await loadResults();
 }
 catch(error){
 
-document
-.getElementById("saveStatus")
-.className =
-"status error";
-
-document
-.getElementById("saveStatus")
-.textContent =
-"Delete failed: " +
-error.message;
+showError(
+"Delete failed: "+
+error.message
+);
 
 }
 
 };
 
 
+/* STATUS MESSAGE */
+
+function showSuccess(message){
+
+const box =
+document.getElementById("saveStatus");
+
+box.className=
+"status success";
+
+box.textContent=
+message;
+
+}
+
+
+function showError(message){
+
+const box =
+document.getElementById("saveStatus");
+
+box.className=
+"status error";
+
+box.textContent=
+message;
+
+}
+
+
+/* DATE */
+
+resultDate.addEventListener(
+"change",
+async()=>{
+
+updateDayNotice();
+
+await loadResults();
+
+}
+);
+
+
 /* LOGOUT */
 
 document
 .getElementById("logout")
-.onclick =
-async () => {
+.onclick=
+async()=>{
 
 await signOut(auth);
 
@@ -1563,7 +1524,7 @@ await signOut(auth);
 
 /* INITIAL */
 
-updateBoxes();
+updateDayNotice();
 
 </script>
 
